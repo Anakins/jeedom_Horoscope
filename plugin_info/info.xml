@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info>
+    <id>Horoscope</id>
+    <name>Horoscope</name>
+    <description>Plugin Horoscope .....</description>
+    <icon>fa fa-keyboard-o</icon>
+    <licence>AGPL</licence>
+    <author>Anakin</author>
+    <installation>Aucune</installation>
+    <require>2.4.6</require>
+    <category>bien-être</category>
+</info>
+
