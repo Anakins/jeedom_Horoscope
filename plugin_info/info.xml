@@ -3,11 +3,12 @@
     <id>Horoscope</id>
     <name>Horoscope</name>
     <description>Plugin Horoscope .....</description>
-    <icon>fa fa-keyboard-o</icon>
+    <icon>icon jeedom-thermo-chaud</icon>
     <licence>AGPL</licence>
     <author>Anakin</author>
     <installation>Aucune</installation>
+	<version>0.1</version>
     <require>2.4.6</require>
-    <category>bien-être</category>
+    <category>wellness</category>
 </info>
 

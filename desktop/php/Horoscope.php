@@ -2,6 +2,7 @@
 if (!isConnect('admin')) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
+$plugin = plugin::byId('Horoscope');
 sendVarToJS('eqType', 'Horoscope');
 $eqLogics = eqLogic::byType('Horoscope');
 ?>
@@ -24,7 +25,7 @@ foreach ($eqLogics as $eqLogic) {
    <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
     <legend>{{Mes Horoscopes}}
     </legend>
-
+	<legend><i class="fa fa-cog"></i>  {{Gestion}}</legend>
     <div class="eqLogicThumbnailContainer">
       <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
          <center>
@@ -32,11 +33,22 @@ foreach ($eqLogics as $eqLogic) {
         </center>
         <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>{{Ajouter}}</center></span>
     </div>
+	
+	      <div class="cursor eqLogicAction" data-action="gotoPluginConf" style="background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;">
+                <center>
+                    <i class="fa fa-wrench" style="font-size : 6em;color:#767676;"></i>
+                </center>
+                <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676"><center>{{Configuration}}</center></span>
+            </div>
+		</div>
+		
+		<legend><i class="fa fa-table"></i> {{Mes Horoscopes}}</legend>
+<div class="eqLogicThumbnailContainer">	
     <?php
 foreach ($eqLogics as $eqLogic) {
 	echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
 	echo "<center>";
-	echo '<img src="plugins/template/doc/images/template_icon.png" height="105" width="95" />';
+	echo '<img src="plugins/Horoscope/doc/images/Belier.png" height="105" width="95" />';
 	echo "</center>";
 	echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
 	echo '</div>';
@@ -73,7 +85,7 @@ foreach (object::all() as $object) {
 		   <div class="form-group">
 			 <label class="col-sm-3 control-label" >{{Signe}}</label>
 		         <div class="col-sm-3">
-                                <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
+                                <select id="sel_object" class="eqLogicAttr form-control" data-l1key="signe_id">
                                     <option value="">{{Bélier}}</option>
                                     <option value="">{{Poisson}}</option>
                                 </select>
@@ -120,6 +132,6 @@ foreach (object::all() as $object) {
 
 </div>
 </div>
-
+<?php include_file('desktop', 'Horoscope', 'js', 'Horoscope');?>
 <?php include_file('desktop', 'template', 'js', 'template');?>
 <?php include_file('core', 'plugin.template', 'js');?>
