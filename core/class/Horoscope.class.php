@@ -20,43 +20,10 @@
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
 class Horoscope extends eqLogic {
-    /*     * *************************Attributs****************************** */
-
-
-
-    /*     * ***********************Methode static*************************** */
-
-    /*
-     * Fonction exécutée automatiquement toutes les minutes par Jeedom
-       */
-	  public static function cron() {
-		
-		log::add('Horoscope', 'debug', 'Avant belier');
-		 foreach (eqLogic::byType('Horoscope', true) as $mi_flora) {   
-		log::add('Horoscope', 'debug', 'Après for each');
-		   //$mi_flora->Belier();
-		   $mi_flora->Test1();
-		   log::add('Horoscope', 'debug', 'Belier');
-		   }
-      } 
-    /*
-     * Fonction exécutée automatiquement toutes les heures par Jeedom
-      public static function cronHourly() {
-      }
-     */
-    /*
-     * Fonction exécutée automatiquement tous les jours par Jeedom
-      public static function cronDayly() {
-      }
-     */
-    /*     * *********************Méthodes d'instance************************* */
-
-	public function Test1() {
-	log::add('Horoscope', 'debug', 'dans Test1()');
-	}
-	
-	public function Belier() {
-	$Signe="belier";
+    
+	public function Signe($Signe1) {
+	log::add('Horoscope', 'debug', 'dans Belier()');
+	$Signe=$Signe1;
 //$Signe=$_GET["Signe"];
 $Lien="http://www.asiaflash.com/horoscope/rss_horojour_$Signe.xml";
 $Phrase="";
@@ -79,9 +46,88 @@ $Total=strlen($Phrase);
 
 $Phrase=substr($Phrase,1,$pos1-1);
 
-echo $Phrase;
+//echo $Phrase;
+log::add('Horoscope', 'debug', 'Phrase générée2 : '.$Phrase);
+
+				//mise à jour base de donnée Jeedom
+				$cmd = $this->getCmd(null, 'HoroscopeDuJour');
+                if (is_object($cmd)) {
+                    // $cmd->setCollectDate($date);
+                    $cmd->event($Phrase);
+                    log::add('Horoscope', 'debug', 'Phrase stockée :' . $Phrase);
+                }
+
+//$mi_horoscope->updateJeedom();
+//log::add('Horoscope', 'debug', 'Apprès updatejeedom '.$Phrase);
+
+}
 	
+	
+	
+	/*     * *************************Attributs****************************** */
+
+
+
+    /*     * ***********************Methode static*************************** */
+
+    /*
+     * Fonction exécutée automatiquement toutes les minutes par Jeedom
+       */
+	  public static function cron() {
+		
+		log::add('Horoscope', 'debug', 'Avant belier');
+		 foreach (eqLogic::byType('Horoscope', true) as $mi_horoscope) {   
+		log::add('Horoscope', 'debug', 'Après for each');
+		   //$mi_flora->Belier();
+		   //$Signe1='belier';
+		   $Signe1='vierge';
+		   $mi_horoscope->Signe($Signe1);
+		   log::add('Horoscope', 'debug', 'Après Belier');
+		   }
+      } 
+    /*
+     * Fonction exécutée automatiquement toutes les heures par Jeedom
+      public static function cronHourly() {
+      }
+     */
+    /*
+     * Fonction exécutée automatiquement tous les jours par Jeedom
+      public static function cronDayly() {
+      }
+     */
+    /*     * *********************Méthodes d'instance************************* */
+	 public function updateJeedom() {
+	log::add('Horoscope', 'debug', 'updateJeedom  param='.$Phrase );
+		/*
+        // store into Jeedom DB
+        if ($Phrase=='' ) {
+            log::add('MiFlora', 'error', 'Toutes les mesures a 0, erreur de connection Mi Flora');
+        } else {
+            //if ($temperature > 100) {
+                log::add('MiFlora', 'error', 'Temperature >100 erreur de connection bluetooth');
+            //} else {
+                
+                //
+                $cmd = $this->getCmd(null, $Phrase);
+                if (is_object($cmd)) {
+                    $cmd->event($Phrase);
+                    log::add('Horoscope', 'debug', $Phrase );
+                }
+				//
+           // }
+        }
+    
+	*/
+	return 'ok';
 	}
+	
+	public function Test1() {
+	log::add('Horoscope', 'debug', 'dans Test1()');
+	$Phrase="";
+	Belier();
+	}
+	
+	
 	
     public function preInsert() {
         
@@ -103,9 +149,26 @@ echo $Phrase;
         
     }
 
-    public function postUpdate() {
+    public function postUpdate()
+    {
         
-    }
+		$cmdlogic = HoroscopeCmd::byEqLogicIdAndLogicalId($this->getId(), 'HoroscopeDuJour');
+        if (!is_object($cmdlogic)) {
+            $HoroscopeCmd = new HoroscopeCmd();
+            $HoroscopeCmd->setName(__('HoroscopeDuJour', __FILE__));
+            $HoroscopeCmd->setEqLogic_id($this->id);
+            $HoroscopeCmd->setLogicalId('HoroscopeDuJour');
+            $HoroscopeCmd->setConfiguration('data', 'HoroscopeDuJour');
+            $HoroscopeCmd->setEqType('Horoscope');
+            $HoroscopeCmd->setType('info');
+            $HoroscopeCmd->setSubType('other');
+            //$HoroscopeCmd->setUnite('');
+            $HoroscopeCmd->setIsHistorized(0);
+            $HoroscopeCmd->save();
+			
+			}
+			
+        }
 
     public function preRemove() {
         
@@ -115,6 +178,10 @@ echo $Phrase;
         
     }
 
+	
+
+	
+	
     /*
      * Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin
       public function toHtml($_version = 'dashboard') {
