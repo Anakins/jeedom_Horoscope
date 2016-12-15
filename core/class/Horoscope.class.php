@@ -83,6 +83,8 @@ log::add('Horoscope', 'debug', 'Phrase générée2 : '.$Phrase);
 		   $Signe1='vierge';
 		   $mi_horoscope->Signe($Signe1);
 		   log::add('Horoscope', 'debug', 'Après Belier');
+		   //$ip = config::byKey('addressip', 'MiFlora');
+		   // $mi_flora->getConfiguration('macAdd');
 		   }
       } 
     /*
@@ -161,7 +163,7 @@ log::add('Horoscope', 'debug', 'Phrase générée2 : '.$Phrase);
             $HoroscopeCmd->setConfiguration('data', 'HoroscopeDuJour');
             $HoroscopeCmd->setEqType('Horoscope');
             $HoroscopeCmd->setType('info');
-            $HoroscopeCmd->setSubType('other');
+            $HoroscopeCmd->setSubType('string');
             //$HoroscopeCmd->setUnite('');
             $HoroscopeCmd->setIsHistorized(0);
             $HoroscopeCmd->save();

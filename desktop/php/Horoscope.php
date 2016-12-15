@@ -85,9 +85,9 @@ foreach (object::all() as $object) {
 		   <div class="form-group">
 			 <label class="col-sm-3 control-label" >{{Signe}}</label>
 		         <div class="col-sm-3">
-                                <select id="sel_object" class="eqLogicAttr form-control" data-l1key="signe_id">
-                                    <option value="">{{Bélier}}</option>
-                                    <option value="">{{Poisson}}</option>
+                                <select id="sel_object" class="eqLogicAttr configuration form-control" data-l1key="signe_id" data-l2key="Signe">
+                                    <option value="1">{{Bélier}}</option>
+                                    <option value="2">{{Poisson}}</option>
                                 </select>
                  </div>
 		   </div>
