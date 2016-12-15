@@ -33,7 +33,7 @@ foreach ($eqLogics as $eqLogic) {
         </center>
         <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>{{Ajouter}}</center></span>
     </div>
-	
+
 	      <div class="cursor eqLogicAction" data-action="gotoPluginConf" style="background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;">
                 <center>
                     <i class="fa fa-wrench" style="font-size : 6em;color:#767676;"></i>
@@ -41,7 +41,8 @@ foreach ($eqLogics as $eqLogic) {
                 <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676"><center>{{Configuration}}</center></span>
             </div>
 		</div>
-		
+
+
 		<legend><i class="fa fa-table"></i> {{Mes Horoscopes}}</legend>
 <div class="eqLogicThumbnailContainer">	
     <?php
@@ -68,6 +69,14 @@ foreach ($eqLogics as $eqLogic) {
                     <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de la personne}}"/>
                 </div>
             </div>
+
+
+
+
+
+
+
+
             <div class="form-group">
                 <label class="col-sm-3 control-label" >{{Objet parent}}</label>
                 <div class="col-sm-3">
@@ -81,18 +90,34 @@ foreach (object::all() as $object) {
                    </select>
                </div>
            </div>
-		   
-		   <div class="form-group">
-			 <label class="col-sm-3 control-label" >{{Signe}}</label>
-		         <div class="col-sm-3">
-                                <select id="sel_object" class="eqLogicAttr configuration form-control" data-l1key="signe_id" data-l2key="Signe">
-                                    <option value="1">{{Bélier}}</option>
-                                    <option value="2">{{Poisson}}</option>
-                                </select>
-                 </div>
-		   </div>
-		   
-		   
+
+
+<div class="form-group">
+<label class="col-sm-3 control-label">{{Signe}}</label>
+<div class="col-sm-3"> <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="Signe">
+<option value="Bélier">Bélier</option>
+<option value="Taureau">Taureau</option>
+<option value="Gémeaux">Gémeaux</option>
+<option value="Cancer">Cancer</option>
+<option value="Lion">Lion</option>
+<option value="Vierge">Vierge</option>
+<option value="Balance">Balance</option>
+<option value="Scorpion ">Scorpion </option>
+<option value="Sagittaire">Sagittaire</option>
+<option value="Capricorne">Capricorne</option>
+<option value="Verseau ">Verseau </option>
+<option value="Poissons">Poissons</option>
+
+</select>
+</div>
+</div>
+
+
+
+
+
+
+
            <div class="form-group">
             <label class="col-sm-3 control-label" >{{Activer}}</label>
             <div class="col-sm-9">
@@ -100,12 +125,15 @@ foreach (object::all() as $object) {
                <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
            </div>
        </div>
-       <div class="form-group">
-        <label class="col-sm-3 control-label">{{Horoscope param 1}}</label>
-        <div class="col-sm-3">
-            <input type="text" class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="city" placeholder="param1"/>
-        </div>
-    </div>
+
+<?php
+ //      <div class="form-group">
+ //       <label class="col-sm-3 control-label">{{Horoscope param 1}}</label>
+ //       <div class="col-sm-3">
+ //           <input type="text" class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="city" placeholder="param1"/>
+  //      </div>
+ //   </div>
+?>
 </fieldset>
 </form>
 

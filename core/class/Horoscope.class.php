@@ -22,7 +22,7 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 class Horoscope extends eqLogic {
     
 	public function Signe($Signe1) {
-	log::add('Horoscope', 'debug', 'dans Belier()');
+	log::add('Horoscope', 'debug', 'Début de la fonction de calcul de l horoscope');
 	$Signe=$Signe1;
 //$Signe=$_GET["Signe"];
 $Lien="http://www.asiaflash.com/horoscope/rss_horojour_$Signe.xml";
@@ -47,14 +47,14 @@ $Total=strlen($Phrase);
 $Phrase=substr($Phrase,1,$pos1-1);
 
 //echo $Phrase;
-log::add('Horoscope', 'debug', 'Phrase générée2 : '.$Phrase);
+log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
 
 				//mise à jour base de donnée Jeedom
 				$cmd = $this->getCmd(null, 'HoroscopeDuJour');
                 if (is_object($cmd)) {
                     // $cmd->setCollectDate($date);
                     $cmd->event($Phrase);
-                    log::add('Horoscope', 'debug', 'Phrase stockée :' . $Phrase);
+                    log::add('Horoscope', 'debug', 'Phrase stockée en BDD : ' . $Phrase);
                 }
 
 //$mi_horoscope->updateJeedom();
@@ -75,16 +75,39 @@ log::add('Horoscope', 'debug', 'Phrase générée2 : '.$Phrase);
        */
 	  public static function cron() {
 		
-		log::add('Horoscope', 'debug', 'Avant belier');
+		log::add('Horoscope', 'debug', 'Avant Lecture de chaque équipement');
 		 foreach (eqLogic::byType('Horoscope', true) as $mi_horoscope) {   
-		log::add('Horoscope', 'debug', 'Après for each');
-		   //$mi_flora->Belier();
-		   //$Signe1='belier';
-		   $Signe1='vierge';
+		log::add('Horoscope', 'debug', 'Après chaque élément');
+
+		   $ID=$mi_horoscope->getId();
+		   $name=$mi_horoscope->getName();
+		   log::add('Horoscope', 'debug', 'Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
+		   $Signe2=$mi_horoscope->getConfiguration('Signe');
+		   log::add('Horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
+		  
+		$Signe1=$Signe2;
+		if ($Signe1=='Taureau') { $Signe1='taureau'; } //ok
+		if ($Signe1=='Bélier') { $Signe1='belier'; } // ok
+		if ($Signe1=='Poissons') { $Signe1='poissons'; } //ok
+		if ($Signe1=='Vierge') { $Signe1='vierge'; } //ok
+		if ($Signe1=='Capricorne') { $Signe1='capricorne'; } //ok
+		if ($Signe1=='Scorpion') { $Signe1='scorpion'; } // nok
+		
+		if ($Signe1=='Sagittaire') { $Signe1='sagittaire'; } // ok
+		if ($Signe1=='Verseau') { $Signe1='verseau'; } //nok
+		if ($Signe1=='Cancer') { $Signe1='cancer'; } // ok
+		if ($Signe1=='Balance') { $Signe1='balance'; } // ok
+		if ($Signe1=='Gémeaux') { $Signe1='gemeaux'; } //ok
+		if ($Signe1=='Lion') { $Signe1='lion'; } // ok
+		/*
+		*/
+			//Procédure de calcul de l horoscope
+		//$Signe1="vierge";
 		   $mi_horoscope->Signe($Signe1);
-		   log::add('Horoscope', 'debug', 'Après Belier');
-		   //$ip = config::byKey('addressip', 'MiFlora');
-		   // $mi_flora->getConfiguration('macAdd');
+		   
+		   
+		   //Récupérattion de paramètre du plugin (pas de l'équipement)
+		   //$Signe2 = config::byKey('Signe', 'Horoscope');
 		   }
       } 
     /*
