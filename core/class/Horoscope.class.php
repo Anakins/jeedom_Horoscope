@@ -21,6 +21,8 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
 class Horoscope extends eqLogic {
     
+	 public static $_widgetPossibility = array('custom' => true);
+	
 	public function Signe($Signe1) {
 	log::add('Horoscope', 'debug', 'Début de la fonction de calcul de l horoscope');
 	$Signe=$Signe1;
@@ -216,6 +218,30 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
       }
      */
 
+	 public function toHtml($_version = 'dashboard') {
+        $replace = $this->preToHtml($_version);
+        if (!is_array($replace)) {
+            return $replace;
+        }
+        $version = jeedom::versionAlias($_version);
+        if ($this->getDisplay('hideOn' . $version) == 1) {
+            return '';
+        }
+        foreach ($this->getCmd('info') as $cmd) {
+            $replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
+            $replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
+            $replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
+            if ($cmd->getIsHistorized() == 1) {
+                $replace['#' . $cmd->getLogicalId() . '_history#'] = 'history cursor';
+            }
+        }
+
+        log::add('Horoscope','debug', $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, 'Horoscope', 'Horoscope'))));
+
+        return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, 'Horoscope', 'Horoscope')));
+    }
+	 
+	 
     /*     * **********************Getteur Setteur*************************** */
 }
 

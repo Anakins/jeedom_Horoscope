@@ -164,6 +164,10 @@ foreach (object::all() as $object) {
 
 </div>
 </div>
+<?php //include_file('desktop', 'Horoscope', 'js', 'Horoscope');?>
+<?php //include_file('desktop', 'template', 'js', 'template');?>
+<?php //include_file('core', 'plugin.template', 'js');?>
+
 <?php include_file('desktop', 'Horoscope', 'js', 'Horoscope');?>
-<?php include_file('desktop', 'template', 'js', 'template');?>
+<?php include_file('core', 'plugin.ajax', 'js'); ?>
 <?php include_file('core', 'plugin.template', 'js');?>
