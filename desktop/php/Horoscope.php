@@ -49,7 +49,11 @@ foreach ($eqLogics as $eqLogic) {
 foreach ($eqLogics as $eqLogic) {
 	echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
 	echo "<center>";
-	echo '<img src="plugins/Horoscope/doc/images/Belier.png" height="105" width="95" />';
+	//echo '<img src="plugins/Horoscope/doc/images/Belier.png" height="105" width="95" />';
+	$Signe2=$eqLogic->getConfiguration('Signe');
+	echo '<img src="plugins/Horoscope/doc/images/PNG/'.$Signe2.'.png" height="105" width="95" />';
+	//log::add('Horoscope', 'debug', 'ID : '.$ID.' et icone : '.'<img src="plugins/Horoscope/doc/images/PNG/'.$Signe2.'.png" height="105" width="95" />');
+	//log::add('Horoscope', 'debug', 'Signe Image : '.$Signe2)
 	echo "</center>";
 	echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
 	echo '</div>';
@@ -102,10 +106,10 @@ foreach (object::all() as $object) {
 <option value="Lion">Lion</option>
 <option value="Vierge">Vierge</option>
 <option value="Balance">Balance</option>
-<option value="Scorpion ">Scorpion </option>
+<option value="Scorpion">Scorpion</option>
 <option value="Sagittaire">Sagittaire</option>
 <option value="Capricorne">Capricorne</option>
-<option value="Verseau ">Verseau </option>
+<option value="Verseau">Verseau</option>
 <option value="Poissons">Poissons</option>
 
 </select>

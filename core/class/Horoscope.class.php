@@ -91,7 +91,7 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
 		if ($Signe1=='Poissons') { $Signe1='poissons'; } //ok
 		if ($Signe1=='Vierge') { $Signe1='vierge'; } //ok
 		if ($Signe1=='Capricorne') { $Signe1='capricorne'; } //ok
-		if ($Signe1=='Scorpion') { $Signe1='scorpion'; } // nok
+		if ($Signe1=='Scorpion') { $Signe1='scorpion'; } // ok
 		
 		if ($Signe1=='Sagittaire') { $Signe1='sagittaire'; } // ok
 		if ($Signe1=='Verseau') { $Signe1='verseau'; } //nok
@@ -99,6 +99,8 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
 		if ($Signe1=='Balance') { $Signe1='balance'; } // ok
 		if ($Signe1=='Gémeaux') { $Signe1='gemeaux'; } //ok
 		if ($Signe1=='Lion') { $Signe1='lion'; } // ok
+		
+		log::add('Horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
 		/*
 		*/
 			//Procédure de calcul de l horoscope
