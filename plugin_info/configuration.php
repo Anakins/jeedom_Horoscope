@@ -37,9 +37,9 @@ if (!isConnect()) {
               <select id="frequence" class="configKey form-control"  data-l1key="frequence" >
               
               
-              <option value="5h">{{à 5H00 du matin}}</option>
+              <option value="5h">{{à 5H00 du matin (conseillé)}}</option>
 			  <option value="1h">{{Toutes les 1 heure}}</option>
-			  <option value="à minuit">{{à minuit}}</option>
+			  <option value="minuit">{{à minuit}}</option>
 			  <option value="1min">{{Toutes les 1 minute (pour les tests)}}</option>
                </select>
           </div>

@@ -76,7 +76,12 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
      * Fonction exécutée automatiquement toutes les minutes par Jeedom
        */
 	  public static function cron() {
+		$today = date('H');
+		$frequence = config::byKey('frequence', 'Horoscope');
+		log::add('Horoscope', 'debug', '--------------------------DEBUT HOROSCOPE CRON MINUTE-------------------------------------------');
+		log::add('Horoscope', 'debug', 'Fréquence : "'.$frequence.'" , heure actuelle : '.$today);
 		
+		if ($frequence == '1min') {
 		log::add('Horoscope', 'debug', 'Avant Lecture de chaque équipement');
 		 foreach (eqLogic::byType('Horoscope', true) as $mi_horoscope) {   
 		log::add('Horoscope', 'debug', 'Après chaque élément');
@@ -103,22 +108,55 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
 		if ($Signe1=='Lion') { $Signe1='lion'; } // ok
 		
 		log::add('Horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
-		/*
-		*/
 			//Procédure de calcul de l horoscope
-		//$Signe1="vierge";
 		   $mi_horoscope->Signe($Signe1);
 		   
-		   
-		   //Récupérattion de paramètre du plugin (pas de l'équipement)
-		   //$Signe2 = config::byKey('Signe', 'Horoscope');
 		   }
+		 }//FIN VERIF FREQUENCE
       } 
-    /*
-     * Fonction exécutée automatiquement toutes les heures par Jeedom
+    
+     // Fonction exécutée automatiquement toutes les heures par Jeedom
       public static function cronHourly() {
+		$today = date('H');
+		$frequence = config::byKey('frequence', 'Horoscope');
+		log::add('Horoscope', 'debug', '--------------------------DEBUT HOROSCOPE CRON HEURE-------------------------------------------');
+		log::add('Horoscope', 'debug', 'Fréquence : "'.$frequence.'" , heure Actuelle : '.$today);
+		
+		
+		if (($frequence == '1h') ||  (($today == '0') && ($frequence == 'minuit')) ||  (($today == '5') && ($frequence == '5h'))  ){
+		log::add('Horoscope', 'debug', 'Avant Lecture de chaque équipement');
+		 foreach (eqLogic::byType('Horoscope', true) as $mi_horoscope) {   
+		log::add('Horoscope', 'debug', 'Après chaque élément');
+
+		   $ID=$mi_horoscope->getId();
+		   $name=$mi_horoscope->getName();
+		   log::add('Horoscope', 'debug', 'Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
+		   $Signe2=$mi_horoscope->getConfiguration('Signe');
+		   log::add('Horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
+		  
+		$Signe1=$Signe2;
+		if ($Signe1=='Taureau') { $Signe1='taureau'; } //ok
+		if ($Signe1=='Bélier') { $Signe1='belier'; } // ok
+		if ($Signe1=='Poissons') { $Signe1='poissons'; } //ok
+		if ($Signe1=='Vierge') { $Signe1='vierge'; } //ok
+		if ($Signe1=='Capricorne') { $Signe1='capricorne'; } //ok
+		if ($Signe1=='Scorpion') { $Signe1='scorpion'; } // ok
+		
+		if ($Signe1=='Sagittaire') { $Signe1='sagittaire'; } // ok
+		if ($Signe1=='Verseau') { $Signe1='verseau'; } //nok
+		if ($Signe1=='Cancer') { $Signe1='cancer'; } // ok
+		if ($Signe1=='Balance') { $Signe1='balance'; } // ok
+		if ($Signe1=='Gémeaux') { $Signe1='gemeaux'; } //ok
+		if ($Signe1=='Lion') { $Signe1='lion'; } // ok
+		
+		log::add('Horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
+			//Procédure de calcul de l horoscope
+		   $mi_horoscope->Signe($Signe1);
+		   
+		   }
+		 }//FIN VERIF FREQUENCE
       }
-     */
+     
     /*
      * Fonction exécutée automatiquement tous les jours par Jeedom
       public static function cronDayly() {
