@@ -24,6 +24,29 @@ if (!isConnect()) {
 ?>
 <form class="form-horizontal">
     <fieldset>
+	
+	<span>
+        <div class="form-group"> <br>
+           <a href="https://github.com/Anakins/jeedom_Horoscope" target="_blank"><font size="+1"><center>Cliquer pour voir la documentation du plugin</center></font></a>
+       </div>
+	</span>
+        <div class="form-group"> <br>
+
+          <label class="col-lg-4 control-label">{{Fréquence de recuperation des données}}</label>
+          <div class="col-lg-2">
+              <select id="frequence" class="configKey form-control"  data-l1key="frequence" >
+              
+              
+              <option value="5h">{{à 5H00 du matin}}</option>
+			  <option value="1h">{{Toutes les 1 heure}}</option>
+			  <option value="à minuit">{{à minuit}}</option>
+			  <option value="1min">{{Toutes les 1 minute (pour les tests)}}</option>
+               </select>
+          </div>
+        </div>
+	
+	<?php
+	/*
         <div class="form-group">
             <label class="col-lg-4 control-label">{{Global param 1}}</label>
             <div class="col-lg-2">
@@ -45,6 +68,8 @@ if (!isConnect()) {
                 </select>
             </div>
         </div>
+		*/
+		?>
   </fieldset>
 </form>
 
