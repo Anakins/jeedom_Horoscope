@@ -226,6 +226,38 @@ log::add('horoscope', 'debug', 'Phrase générée : '.$Phrase);
             $horoscopeCmd->setIsHistorized(0);
             $horoscopeCmd->save();
 			
+					 foreach (eqLogic::byType('horoscope', true) as $mi_horoscope) {   
+		log::add('horoscope', 'debug', 'Après chaque élément');
+
+		   $ID=$mi_horoscope->getId();
+		   $name=$mi_horoscope->getName();
+		   log::add('horoscope', 'debug', 'Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
+		   $Signe2=$mi_horoscope->getConfiguration('Signe');
+		   log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
+		  
+		$Signe1=$Signe2;
+		if ($Signe1=='Taureau') { $Signe1='taureau'; } //ok
+		if ($Signe1=='Bélier') { $Signe1='belier'; } // ok
+		if ($Signe1=='Poissons') { $Signe1='poissons'; } //ok
+		if ($Signe1=='Vierge') { $Signe1='vierge'; } //ok
+		if ($Signe1=='Capricorne') { $Signe1='capricorne'; } //ok
+		if ($Signe1=='Scorpion') { $Signe1='scorpion'; } // ok
+		
+		if ($Signe1=='Sagittaire') { $Signe1='sagittaire'; } // ok
+		if ($Signe1=='Verseau') { $Signe1='verseau'; } //nok
+		if ($Signe1=='Cancer') { $Signe1='cancer'; } // ok
+		if ($Signe1=='Balance') { $Signe1='balance'; } // ok
+		if ($Signe1=='Gémeaux') { $Signe1='gemeaux'; } //ok
+		if ($Signe1=='Lion') { $Signe1='lion'; } // ok
+		
+		log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
+			//Procédure de calcul de l horoscope
+		   $mi_horoscope->Signe($Signe1);
+		   $mi_horoscope->refreshWidget();
+		   
+		   }
+			
+			
 			}
 			
         }
