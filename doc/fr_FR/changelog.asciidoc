@@ -1,7 +1,12 @@
 
-Versions 1.0 ... 1.0 : 12 Decembre 2016 - 12 Decembre 2016
+Versions 1.0 ... 1.02 : 12 Decembre 2016 - 12 Decembre 2016
 --
 * Version intiales du plugin.
+
+Version 1.02: 10 Decembre 2016
+--
+* Actualisation de l'horoscope apres la creation de l'equipement
+
 
 Version 1.0: 10 Decembre 2016
 --

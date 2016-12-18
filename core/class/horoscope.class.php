@@ -202,7 +202,7 @@ log::add('horoscope', 'debug', 'Phrase générée : '.$Phrase);
     }
 
     public function postSave() {
-        
+        	log::add('horoscope', 'debug', 'Après chaque SAVE');
     }
 
     public function preUpdate() {
@@ -226,13 +226,12 @@ log::add('horoscope', 'debug', 'Phrase générée : '.$Phrase);
             $horoscopeCmd->setIsHistorized(0);
             $horoscopeCmd->save();
 			
-					 foreach (eqLogic::byType('horoscope', true) as $mi_horoscope) {   
-		log::add('horoscope', 'debug', 'Après chaque élément');
+		log::add('horoscope', 'debug', 'Après chaque UPDATE');
 
-		   $ID=$mi_horoscope->getId();
-		   $name=$mi_horoscope->getName();
+		   $ID=$this->getId();
+		   $name=$this->getName();
 		   log::add('horoscope', 'debug', 'Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
-		   $Signe2=$mi_horoscope->getConfiguration('Signe');
+		   $Signe2=$this->getConfiguration('Signe');
 		   log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
 		  
 		$Signe1=$Signe2;
@@ -252,13 +251,13 @@ log::add('horoscope', 'debug', 'Phrase générée : '.$Phrase);
 		
 		log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
 			//Procédure de calcul de l horoscope
-		   $mi_horoscope->Signe($Signe1);
-		   $mi_horoscope->refreshWidget();
+		   $this->Signe($Signe1);
+		   $this->refreshWidget();
 		   
 		   }
 			
 			
-			}
+			
 			
         }
 
