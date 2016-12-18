@@ -110,6 +110,7 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
 		log::add('Horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
 			//Procédure de calcul de l horoscope
 		   $mi_horoscope->Signe($Signe1);
+		   $mi_horoscope->refreshWidget();
 		   
 		   }
 		 }//FIN VERIF FREQUENCE
@@ -152,7 +153,7 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
 		log::add('Horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
 			//Procédure de calcul de l horoscope
 		   $mi_horoscope->Signe($Signe1);
-		   
+		   $mi_horoscope->refreshWidget();
 		   }
 		 }//FIN VERIF FREQUENCE
       }
@@ -187,15 +188,7 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
 	*/
 	return 'ok';
 	}
-	
-	public function Test1() {
-	log::add('Horoscope', 'debug', 'dans Test1()');
-	$Phrase="";
-	Belier();
-	}
-	
-	
-	
+		
     public function preInsert() {
         
     }

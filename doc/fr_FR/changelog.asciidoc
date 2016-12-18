@@ -1,0 +1,10 @@
+
+Versions 1.0 ... 1.0 : 12 Decembre 2016 - 12 Decembre 2016
+--
+* Version intiales du plugin.
+
+Version 1.0: 10 Decembre 2016
+--
+* Supporte les 12 signes du zodiaque.
+* Premiere publication du plugin
+
