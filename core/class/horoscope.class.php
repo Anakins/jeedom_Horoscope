@@ -56,7 +56,9 @@ log::add('horoscope', 'debug', 'Phrase générée : '.$Phrase);
                 if (is_object($cmd)) {
                     // $cmd->setCollectDate($date);
                     $cmd->event($Phrase);
-                    log::add('horoscope', 'debug', 'Phrase stockée en BDD : ' . $Phrase);
+					$ID=$this->getId();
+					$name=$this->getName();
+                    log::add('horoscope', 'debug', 'Phrase stockée en BDD pour l ID : '.$ID.' et le nom : '.$name.' : ' . $Phrase);
                 }
 
 //$mi_horoscope->updateJeedom();
