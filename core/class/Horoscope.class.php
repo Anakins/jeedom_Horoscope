@@ -123,7 +123,7 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
 		log::add('Horoscope', 'debug', 'Fréquence : "'.$frequence.'" , heure Actuelle : '.$today);
 		
 		
-		if (($frequence == '1h') ||  (($today == '0') && ($frequence == 'minuit')) ||  (($today == '5') && ($frequence == '5h'))  ){
+		if (($frequence == '1h') ||  (($today == '00') && ($frequence == 'minuit')) ||  (($today == '05') && ($frequence == '5h'))  ){
 		log::add('Horoscope', 'debug', 'Avant Lecture de chaque équipement');
 		 foreach (eqLogic::byType('Horoscope', true) as $mi_horoscope) {   
 		log::add('Horoscope', 'debug', 'Après chaque élément');
