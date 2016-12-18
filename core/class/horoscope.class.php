@@ -205,32 +205,7 @@ log::add('horoscope', 'debug', 'Phrase générée : '.$Phrase);
 
     public function postSave() {
         	log::add('horoscope', 'debug', 'Après chaque SAVE');
-    }
-
-    public function preUpdate() {
-        
-    }
-
-    public function postUpdate()
-    {
-        
-		$cmdlogic = horoscopeCmd::byEqLogicIdAndLogicalId($this->getId(), 'horoscopeDuJour');
-        if (!is_object($cmdlogic)) {
-            $horoscopeCmd = new horoscopeCmd();
-            $horoscopeCmd->setName(__('horoscopeDuJour', __FILE__));
-            $horoscopeCmd->setEqLogic_id($this->id);
-            $horoscopeCmd->setLogicalId('horoscopeDuJour');
-            $horoscopeCmd->setConfiguration('data', 'horoscopeDuJour');
-            $horoscopeCmd->setEqType('horoscope');
-            $horoscopeCmd->setType('info');
-            $horoscopeCmd->setSubType('string');
-            //$horoscopeCmd->setUnite('');
-            $horoscopeCmd->setIsHistorized(0);
-            $horoscopeCmd->save();
-			
-		log::add('horoscope', 'debug', 'Après chaque UPDATE');
-
-		   $ID=$this->getId();
+    	   $ID=$this->getId();
 		   $name=$this->getName();
 		   log::add('horoscope', 'debug', 'Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
 		   $Signe2=$this->getConfiguration('Signe');
@@ -258,10 +233,37 @@ log::add('horoscope', 'debug', 'Phrase générée : '.$Phrase);
 		   
 		   }
 			
+	
+	
+
+    public function preUpdate() {
+        
+    }
+
+    public function postUpdate()
+    {
+        
+		$cmdlogic = horoscopeCmd::byEqLogicIdAndLogicalId($this->getId(), 'horoscopeDuJour');
+        if (!is_object($cmdlogic)) {
+            $horoscopeCmd = new horoscopeCmd();
+            $horoscopeCmd->setName(__('horoscopeDuJour', __FILE__));
+            $horoscopeCmd->setEqLogic_id($this->id);
+            $horoscopeCmd->setLogicalId('horoscopeDuJour');
+            $horoscopeCmd->setConfiguration('data', 'horoscopeDuJour');
+            $horoscopeCmd->setEqType('horoscope');
+            $horoscopeCmd->setType('info');
+            $horoscopeCmd->setSubType('string');
+            //$horoscopeCmd->setUnite('');
+            $horoscopeCmd->setIsHistorized(0);
+            $horoscopeCmd->save();
+			
+		log::add('horoscope', 'debug', 'Après chaque UPDATE');
+
 			
 			
 			
         }
+		}
 
     public function preRemove() {
         
