@@ -19,12 +19,12 @@
 /* * ***************************Includes********************************* */
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
-class Horoscope extends eqLogic {
+class horoscope extends eqLogic {
     
 	 public static $_widgetPossibility = array('custom' => true);
 	
 	public function Signe($Signe1) {
-	log::add('Horoscope', 'debug', 'Début de la fonction de calcul de l horoscope');
+	log::add('horoscope', 'debug', 'Début de la fonction de calcul de l horoscope');
 	$Signe=$Signe1;
 //$Signe=$_GET["Signe"];
 $Lien="http://www.asiaflash.com/horoscope/rss_horojour_$Signe.xml";
@@ -49,18 +49,18 @@ $Total=strlen($Phrase);
 $Phrase=substr($Phrase,1,$pos1-1);
 
 //echo $Phrase;
-log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
+log::add('horoscope', 'debug', 'Phrase générée : '.$Phrase);
 
 				//mise à jour base de donnée Jeedom
-				$cmd = $this->getCmd(null, 'HoroscopeDuJour');
+				$cmd = $this->getCmd(null, 'horoscopeDuJour');
                 if (is_object($cmd)) {
                     // $cmd->setCollectDate($date);
                     $cmd->event($Phrase);
-                    log::add('Horoscope', 'debug', 'Phrase stockée en BDD : ' . $Phrase);
+                    log::add('horoscope', 'debug', 'Phrase stockée en BDD : ' . $Phrase);
                 }
 
 //$mi_horoscope->updateJeedom();
-//log::add('Horoscope', 'debug', 'Apprès updatejeedom '.$Phrase);
+//log::add('horoscope', 'debug', 'Apprès updatejeedom '.$Phrase);
 
 }
 	
@@ -77,20 +77,20 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
        */
 	  public static function cron() {
 		$today = date('H');
-		$frequence = config::byKey('frequence', 'Horoscope');
-		log::add('Horoscope', 'debug', '--------------------------DEBUT HOROSCOPE CRON MINUTE-------------------------------------------');
-		log::add('Horoscope', 'debug', 'Fréquence : "'.$frequence.'" , heure actuelle : '.$today);
+		$frequence = config::byKey('frequence', 'horoscope');
+		log::add('horoscope', 'debug', '--------------------------DEBUT HOROSCOPE CRON MINUTE-------------------------------------------');
+		log::add('horoscope', 'debug', 'Fréquence : "'.$frequence.'" , heure actuelle : '.$today);
 		
 		if ($frequence == '1min') {
-		log::add('Horoscope', 'debug', 'Avant Lecture de chaque équipement');
-		 foreach (eqLogic::byType('Horoscope', true) as $mi_horoscope) {   
-		log::add('Horoscope', 'debug', 'Après chaque élément');
+		log::add('horoscope', 'debug', 'Avant Lecture de chaque équipement');
+		 foreach (eqLogic::byType('horoscope', true) as $mi_horoscope) {   
+		log::add('horoscope', 'debug', 'Après chaque élément');
 
 		   $ID=$mi_horoscope->getId();
 		   $name=$mi_horoscope->getName();
-		   log::add('Horoscope', 'debug', 'Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
+		   log::add('horoscope', 'debug', 'Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
 		   $Signe2=$mi_horoscope->getConfiguration('Signe');
-		   log::add('Horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
+		   log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
 		  
 		$Signe1=$Signe2;
 		if ($Signe1=='Taureau') { $Signe1='taureau'; } //ok
@@ -107,7 +107,7 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
 		if ($Signe1=='Gémeaux') { $Signe1='gemeaux'; } //ok
 		if ($Signe1=='Lion') { $Signe1='lion'; } // ok
 		
-		log::add('Horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
+		log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
 			//Procédure de calcul de l horoscope
 		   $mi_horoscope->Signe($Signe1);
 		   $mi_horoscope->refreshWidget();
@@ -119,21 +119,21 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
      // Fonction exécutée automatiquement toutes les heures par Jeedom
       public static function cronHourly() {
 		$today = date('H');
-		$frequence = config::byKey('frequence', 'Horoscope');
-		log::add('Horoscope', 'debug', '--------------------------DEBUT HOROSCOPE CRON HEURE-------------------------------------------');
-		log::add('Horoscope', 'debug', 'Fréquence : "'.$frequence.'" , heure Actuelle : '.$today);
+		$frequence = config::byKey('frequence', 'horoscope');
+		log::add('horoscope', 'debug', '--------------------------DEBUT HOROSCOPE CRON HEURE-------------------------------------------');
+		log::add('horoscope', 'debug', 'Fréquence : "'.$frequence.'" , heure Actuelle : '.$today);
 		
 		
 		if (($frequence == '1h') ||  (($today == '00') && ($frequence == 'minuit')) ||  (($today == '05') && ($frequence == '5h'))  ){
-		log::add('Horoscope', 'debug', 'Avant Lecture de chaque équipement');
-		 foreach (eqLogic::byType('Horoscope', true) as $mi_horoscope) {   
-		log::add('Horoscope', 'debug', 'Après chaque élément');
+		log::add('horoscope', 'debug', 'Avant Lecture de chaque équipement');
+		 foreach (eqLogic::byType('horoscope', true) as $mi_horoscope) {   
+		log::add('horoscope', 'debug', 'Après chaque élément');
 
 		   $ID=$mi_horoscope->getId();
 		   $name=$mi_horoscope->getName();
-		   log::add('Horoscope', 'debug', 'Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
+		   log::add('horoscope', 'debug', 'Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
 		   $Signe2=$mi_horoscope->getConfiguration('Signe');
-		   log::add('Horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
+		   log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
 		  
 		$Signe1=$Signe2;
 		if ($Signe1=='Taureau') { $Signe1='taureau'; } //ok
@@ -150,7 +150,7 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
 		if ($Signe1=='Gémeaux') { $Signe1='gemeaux'; } //ok
 		if ($Signe1=='Lion') { $Signe1='lion'; } // ok
 		
-		log::add('Horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
+		log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
 			//Procédure de calcul de l horoscope
 		   $mi_horoscope->Signe($Signe1);
 		   $mi_horoscope->refreshWidget();
@@ -165,7 +165,7 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
      */
     /*     * *********************Méthodes d'instance************************* */
 	 public function updateJeedom() {
-	log::add('Horoscope', 'debug', 'updateJeedom  param='.$Phrase );
+	log::add('horoscope', 'debug', 'updateJeedom  param='.$Phrase );
 		/*
         // store into Jeedom DB
         if ($Phrase=='' ) {
@@ -179,7 +179,7 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
                 $cmd = $this->getCmd(null, $Phrase);
                 if (is_object($cmd)) {
                     $cmd->event($Phrase);
-                    log::add('Horoscope', 'debug', $Phrase );
+                    log::add('horoscope', 'debug', $Phrase );
                 }
 				//
            // }
@@ -212,19 +212,19 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
     public function postUpdate()
     {
         
-		$cmdlogic = HoroscopeCmd::byEqLogicIdAndLogicalId($this->getId(), 'HoroscopeDuJour');
+		$cmdlogic = horoscopeCmd::byEqLogicIdAndLogicalId($this->getId(), 'horoscopeDuJour');
         if (!is_object($cmdlogic)) {
-            $HoroscopeCmd = new HoroscopeCmd();
-            $HoroscopeCmd->setName(__('HoroscopeDuJour', __FILE__));
-            $HoroscopeCmd->setEqLogic_id($this->id);
-            $HoroscopeCmd->setLogicalId('HoroscopeDuJour');
-            $HoroscopeCmd->setConfiguration('data', 'HoroscopeDuJour');
-            $HoroscopeCmd->setEqType('Horoscope');
-            $HoroscopeCmd->setType('info');
-            $HoroscopeCmd->setSubType('string');
-            //$HoroscopeCmd->setUnite('');
-            $HoroscopeCmd->setIsHistorized(0);
-            $HoroscopeCmd->save();
+            $horoscopeCmd = new horoscopeCmd();
+            $horoscopeCmd->setName(__('horoscopeDuJour', __FILE__));
+            $horoscopeCmd->setEqLogic_id($this->id);
+            $horoscopeCmd->setLogicalId('horoscopeDuJour');
+            $horoscopeCmd->setConfiguration('data', 'horoscopeDuJour');
+            $horoscopeCmd->setEqType('horoscope');
+            $horoscopeCmd->setType('info');
+            $horoscopeCmd->setSubType('string');
+            //$horoscopeCmd->setUnite('');
+            $horoscopeCmd->setIsHistorized(0);
+            $horoscopeCmd->save();
 			
 			}
 			
@@ -267,16 +267,16 @@ log::add('Horoscope', 'debug', 'Phrase générée : '.$Phrase);
             }
         }
 
-        log::add('Horoscope','debug', $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, 'Horoscope', 'Horoscope'))));
+        log::add('horoscope','debug', $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, 'horoscope', 'horoscope'))));
 
-        return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, 'Horoscope', 'Horoscope')));
+        return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, 'horoscope', 'horoscope')));
     }
 	 
 	 
     /*     * **********************Getteur Setteur*************************** */
 }
 
-class HoroscopeCmd extends cmd {
+class horoscopeCmd extends cmd {
     /*     * *************************Attributs****************************** */
 
 

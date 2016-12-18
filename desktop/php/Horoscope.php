@@ -2,9 +2,9 @@
 if (!isConnect('admin')) {
 	throw new Exception('{{401 - Accès non autorisé}}');
 }
-$plugin = plugin::byId('Horoscope');
-sendVarToJS('eqType', 'Horoscope');
-$eqLogics = eqLogic::byType('Horoscope');
+$plugin = plugin::byId('horoscope');
+sendVarToJS('eqType', 'horoscope');
+$eqLogics = eqLogic::byType('horoscope');
 ?>
 
 <div class="row row-overflow">
@@ -23,7 +23,7 @@ foreach ($eqLogics as $eqLogic) {
    </div>
 
    <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
-    <legend>{{Mes Horoscopes}}
+    <legend>{{Mes horoscopes}}
     </legend>
 	<legend><i class="fa fa-cog"></i>  {{Gestion}}</legend>
     <div class="eqLogicThumbnailContainer">
@@ -43,17 +43,17 @@ foreach ($eqLogics as $eqLogic) {
 		</div>
 
 
-		<legend><i class="fa fa-table"></i> {{Mes Horoscopes}}</legend>
+		<legend><i class="fa fa-table"></i> {{Mes horoscopes}}</legend>
 <div class="eqLogicThumbnailContainer">	
     <?php
 foreach ($eqLogics as $eqLogic) {
 	echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
 	echo "<center>";
-	//echo '<img src="plugins/Horoscope/doc/images/Belier.png" height="105" width="95" />';
+	//echo '<img src="plugins/horoscope/doc/images/Belier.png" height="105" width="95" />';
 	$Signe2=$eqLogic->getConfiguration('Signe');
-	echo '<img src="plugins/Horoscope/doc/images/PNG/'.$Signe2.'.png" height="105" width="95" />';
-	//log::add('Horoscope', 'debug', 'ID : '.$ID.' et icone : '.'<img src="plugins/Horoscope/doc/images/PNG/'.$Signe2.'.png" height="105" width="95" />');
-	//log::add('Horoscope', 'debug', 'Signe Image : '.$Signe2)
+	echo '<img src="plugins/horoscope/doc/images/PNG/'.$Signe2.'.png" height="105" width="95" />';
+	//log::add('horoscope', 'debug', 'ID : '.$ID.' et icone : '.'<img src="plugins/horoscope/doc/images/PNG/'.$Signe2.'.png" height="105" width="95" />');
+	//log::add('horoscope', 'debug', 'Signe Image : '.$Signe2)
 	echo "</center>";
 	echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center>' . $eqLogic->getHumanName(true, true) . '</center></span>';
 	echo '</div>';
@@ -132,7 +132,7 @@ foreach (object::all() as $object) {
 
 <?php
  //      <div class="form-group">
- //       <label class="col-sm-3 control-label">{{Horoscope param 1}}</label>
+ //       <label class="col-sm-3 control-label">{{horoscope param 1}}</label>
  //       <div class="col-sm-3">
  //           <input type="text" class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="city" placeholder="param1"/>
   //      </div>
@@ -141,7 +141,7 @@ foreach (object::all() as $object) {
 </fieldset>
 </form>
 
-<legend>{{Horoscope}}</legend>
+<legend>{{horoscope}}</legend>
 <a class="btn btn-success btn-sm cmdAction" data-action="add"><i class="fa fa-plus-circle"></i> {{Commandes}}</a><br/><br/>
 <table id="table_cmd" class="table table-bordered table-condensed">
     <thead>
@@ -164,10 +164,10 @@ foreach (object::all() as $object) {
 
 </div>
 </div>
-<?php //include_file('desktop', 'Horoscope', 'js', 'Horoscope');?>
+<?php //include_file('desktop', 'horoscope', 'js', 'horoscope');?>
 <?php //include_file('desktop', 'template', 'js', 'template');?>
 <?php //include_file('core', 'plugin.template', 'js');?>
 
-<?php include_file('desktop', 'Horoscope', 'js', 'Horoscope');?>
+<?php include_file('desktop', 'horoscope', 'js', 'horoscope');?>
 <?php include_file('core', 'plugin.ajax', 'js'); ?>
 <?php include_file('core', 'plugin.template', 'js');?>

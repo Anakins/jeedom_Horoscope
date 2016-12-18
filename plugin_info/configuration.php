@@ -27,7 +27,7 @@ if (!isConnect()) {
 	
 	<span>
         <div class="form-group"> <br>
-           <a href="https://github.com/Anakins/jeedom_Horoscope" target="_blank"><font size="+1"><center>Cliquer pour voir la documentation du plugin</center></font></a>
+           <a href="https://github.com/Anakins/jeedom_horoscope" target="_blank"><font size="+1"><center>Cliquer pour voir la documentation du plugin</center></font></a>
        </div>
 	</span>
         <div class="form-group"> <br>

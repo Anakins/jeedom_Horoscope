@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <info>
-    <id>Horoscope</id>
-    <name>Horoscope</name>
+    <id>horoscope</id>
+    <name>horoscope</name>
     <description>Plugin Horoscope .....</description>
     <icon>icon jeedom-thermo-chaud</icon>
     <licence>AGPL</licence>
     <author>Anakin</author>
     <installation>Aucune</installation>
-	<version>0.1</version>
+	<version>1.0</version>
     <require>2.4.6</require>
     <category>wellness</category>
 </info>
