@@ -205,6 +205,101 @@ log::add('horoscope', 'debug', 'Phrase générée : '.$Phrase);
 
     public function postSave() {
         	log::add('horoscope', 'debug', 'Après chaque SAVE');
+			$cmdlogic = horoscopeCmd::byEqLogicIdAndLogicalId($this->getId(), 'horoscopeDuJour');
+        if (!is_object($cmdlogic)) {
+		log::add('horoscope', 'debug', 'L équipement n pas a été trouvé dans SAVE donc pas de mise à jour :');
+		
+		}
+		else {
+			log::add('horoscope', 'debug', 'L équipement a été trouvé dans SAVE donc mise à jour :');
+		
+			
+		log::add('horoscope', 'debug', 'Après chaque SAVE');
+
+		   $ID=$this->getId();
+		   $name=$this->getName();
+		   log::add('horoscope', 'debug', 'Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
+		   $Signe2=$this->getConfiguration('Signe');
+		   log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
+		  
+		$Signe1=$Signe2;
+		if ($Signe1=='Taureau') { $Signe1='taureau'; } //ok
+		if ($Signe1=='Bélier') { $Signe1='belier'; } // ok
+		if ($Signe1=='Poissons') { $Signe1='poissons'; } //ok
+		if ($Signe1=='Vierge') { $Signe1='vierge'; } //ok
+		if ($Signe1=='Capricorne') { $Signe1='capricorne'; } //ok
+		if ($Signe1=='Scorpion') { $Signe1='scorpion'; } // ok
+		
+		if ($Signe1=='Sagittaire') { $Signe1='sagittaire'; } // ok
+		if ($Signe1=='Verseau') { $Signe1='verseau'; } //nok
+		if ($Signe1=='Cancer') { $Signe1='cancer'; } // ok
+		if ($Signe1=='Balance') { $Signe1='balance'; } // ok
+		if ($Signe1=='Gémeaux') { $Signe1='gemeaux'; } //ok
+		if ($Signe1=='Lion') { $Signe1='lion'; } // ok
+		
+		log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
+			//Procédure de calcul de l horoscope
+		   $this->Signe($Signe1);
+		    if ($Signe1 == '') {
+			log::add('horoscope', 'debug', 'Deuxième essai car variable récupérer vide : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
+		   $this->Signe($Signe1);
+		   
+		   }
+		    if ($Signe1 == '') {
+			log::add('horoscope', 'debug', 'Troisième et dernier essai car variable récupérer vide : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
+		   $this->Signe($Signe1);
+		   
+		   }
+		   $this->refreshWidget();
+		   
+		  	
+		
+		
+				$cmdlogic = horoscopeCmd::byEqLogicIdAndLogicalId($this->getId(), 'signe');
+        if (!is_object($cmdlogic)) {
+		log::add('horoscope', 'debug', 'L équipement (Signe) n a pas a été trouvé dans SAVE donc création :');
+		    $horoscopeCmd = new horoscopeCmd();
+            $horoscopeCmd->setName(__('signe', __FILE__));
+            $horoscopeCmd->setEqLogic_id($this->id);
+            $horoscopeCmd->setLogicalId('signe');
+            $horoscopeCmd->setConfiguration('data', 'signe');
+            $horoscopeCmd->setEqType('horoscope');
+            $horoscopeCmd->setType('info');
+            $horoscopeCmd->setSubType('string');
+            //$horoscopeCmd->setUnite('');
+            $horoscopeCmd->setIsHistorized(0);
+            $horoscopeCmd->save();
+			//$this->$Signe2;
+			log::add('horoscope', 'debug', 'L équipement (Signe) a été créé dans SAVE donc mise à jour :');
+		   //$ID=$this->getId();
+		   //$name=$this->getName();
+		   log::add('horoscope', 'debug', 'Signe - Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
+		   $Signe2=$this->getConfiguration('Signe');
+		   log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
+			$cmd = $this->getCmd(null, 'signe');
+                if (is_object($cmd)) {
+		   $cmd->event($Signe2);
+			}	
+		   $this->refreshWidget();  
+			
+		
+		}
+		else {
+			log::add('horoscope', 'debug', 'L équipement (Signe) a été trouvé dans SAVE donc mise à jour :');
+		   $ID=$this->getId();
+		   $name=$this->getName();
+		   log::add('horoscope', 'debug', 'Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
+		   $Signe2=$this->getConfiguration('Signe');
+		   log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
+		   //mise à jour base de donnée Jeedom
+				$cmd = $this->getCmd(null, 'signe');
+                if (is_object($cmd)) {
+		   $cmd->event($Signe2);
+			}		   
+		   $this->refreshWidget();  
+				   
+		}
+		}
     }
 
     public function preUpdate() {
@@ -254,14 +349,53 @@ log::add('horoscope', 'debug', 'Phrase générée : '.$Phrase);
 		log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
 			//Procédure de calcul de l horoscope
 		   $this->Signe($Signe1);
-		   $this->refreshWidget();
+		    if ($Signe1 == '') {
+			log::add('horoscope', 'debug', 'Deuxième essai car variable récupérer vide : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
+		   $this->Signe($Signe1);
 		   
 		   }
-			
-			
-			
-			
-        }
+		    if ($Signe1 == '') {
+			log::add('horoscope', 'debug', 'Troisième et dernier essai car variable récupérer vide : "'.$Signe2.'", Envoi du signe : "'.$Signe1.'"');
+		   $this->Signe($Signe1);
+		   
+		   }
+		   
+		   }
+
+		  	
+        
+		
+		//Signe
+		
+			$cmdlogic = horoscopeCmd::byEqLogicIdAndLogicalId($this->getId(), 'signe');
+        if (!is_object($cmdlogic)) {
+		log::add('horoscope', 'debug', 'L équipement (Signe) n a pas a été trouvé dans SAVE donc création :');
+		    $horoscopeCmd = new horoscopeCmd();
+            $horoscopeCmd->setName(__('signe', __FILE__));
+            $horoscopeCmd->setEqLogic_id($this->id);
+            $horoscopeCmd->setLogicalId('signe');
+            $horoscopeCmd->setConfiguration('data', 'signe');
+            $horoscopeCmd->setEqType('horoscope');
+            $horoscopeCmd->setType('info');
+            $horoscopeCmd->setSubType('string');
+            //$horoscopeCmd->setUnite('');
+            $horoscopeCmd->setIsHistorized(0);
+            $horoscopeCmd->save();
+			$this->$Signe2;
+			log::add('horoscope', 'debug', 'L équipement (Signe) a été créé dans SAVE donc mise à jour :');
+		   $ID=$this->getId();
+		   $name=$this->getName();
+		   log::add('horoscope', 'debug', 'Signe - Récupération de l ID : '.$ID.' et du nom de la personne : '.$name);
+		   $Signe2=$this->getConfiguration('Signe');
+		   log::add('horoscope', 'debug', 'Signe du Zodiaque enregistré : '.$Signe2);
+$cmd = $this->getCmd(null, 'signe');
+                if (is_object($cmd)) {
+		   $cmd->event($Signe2);
+		   }
+		   }
+		   		   $this->refreshWidget();
+	}
+		
 
     public function preRemove() {
         

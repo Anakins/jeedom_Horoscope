@@ -1,7 +1,12 @@
 
-Versions 1.0 ... 1.04 : 18 Decembre 2016 - 18 Decembre 2016
+Versions 1.0 ... 1.04 : 18 Decembre 2016 - 19 Decembre 2016
 --
 * Version intiales du plugin.
+
+
+Version 1.05: 19 Decembre 2016
+--
+* Mise à jour du widget
 
 
 Version 1.04: 18 Decembre 2016
