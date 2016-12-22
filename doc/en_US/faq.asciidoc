@@ -1,5 +1,5 @@
 
-.Est-ce que ce plugin s'appuie sur des API tiers ?
+. Is the plugin relies on third-party API?
 --
 Le plugin n'utilise que du PHP  pour aller chercher les informations (après découpage) sur un site d'astrologie.
 --
