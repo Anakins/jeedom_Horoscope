@@ -1,5 +1,5 @@
 === The plugin configuration
 
-La partie configuration du plugin permet:
+On the configuration page of the plugin
 --
 * de choisir la frequence d'actualisation de l'horoscope
