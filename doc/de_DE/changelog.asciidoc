@@ -6,7 +6,7 @@ Versionen 1.0... 1.04 : 18. Dezember 2016 - 19. Dezember 2016
 
 Version 1.05: 19. Dezember 2016
 --
-* Mise à jour du widget
+* Update des Widgets
 
 
 Version 1.04: 18 Dezember 2016
