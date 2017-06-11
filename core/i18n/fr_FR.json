@@ -1,0 +1,70 @@
+{
+    "plugins\/horoscope\/plugin_info\/info.xml": {
+        "Plugin Horoscope .....": "Plugin Horoscope .....",
+        "Aucune": "Aucune"
+    },
+    "plugins\/horoscope\/plugin_info\/configuration.php": {
+        "Fréquence de recuperation des données": "Fréquence de recuperation des données",
+        "à 5H00 du matin (conseillé)": "à 5H00 du matin (conseillé)",
+        "Toutes les 1 heure": "Toutes les 1 heure",
+        "à minuit": "à minuit",
+        "Toutes les 1 minute (pour les tests)": "Toutes les 1 minute (pour les tests)"
+    },
+    "plugins\/horoscope\/desktop\/php\/horoscope.php": {
+        "Ajouter un template": "Ajouter un template",
+        "Rechercher": "Rechercher",
+        "Mes horoscopes": "Mes horoscopes",
+        "Gestion": "Gestion",
+        "Ajouter": "Ajouter",
+        "Configuration": "Configuration",
+        "Général": "Général",
+        "Nom de la personne": "Nom de la personne",
+        "Objet parent": "Objet parent",
+        "Aucun": "Aucun",
+        "Signe": "Signe",
+        "Activer": "Activer",
+        "Visible": "Visible",
+        "horoscope": "horoscope",
+        "Commandes": "Commandes",
+        "Nom": "Nom",
+        "Type": "Type",
+        "Action": "Action",
+        "Supprimer": "Supprimer",
+        "Sauvegarder": "Sauvegarder",
+        "taureau": "Taureau",
+        "belier": "Bélier",
+        "poissons": "Poissons",
+        "vierge": "Vierge",
+        "capricorne": "Capricorne",
+        "scorpion": "Scorpion",
+        "sagittaire": "Sagittaire",
+        "verseau": "Verseau",
+        "cancer": "Cancer",
+        "balance": "Balance",
+        "gemeaux": "Gémeaux",
+        "lion": "Lion",
+        "Ajouter un horoscope": "Ajouter un horoscope",
+        "Configuration avancée": "Configuration avancée",
+        "Equipement": "Equipement",
+        "Paramètres": "Paramètres"
+    },
+    "plugins\/horoscope\/core\/class\/horoscope.class.php": {
+        "horoscopeDuJour": "horoscopeDuJour",
+        "signe": "signe",
+        "Vous n'avez configuré aucun signe.": "Vous n'avez configuré aucun signe.",
+        "Amour": "Amour",
+        "Argent": "Argent",
+        "Santé": "Santé",
+        "Travail": "Travail",
+        "Famille": "Famille",
+        "Vie sociale": "Vie sociale",
+        "Citation du jour": "Citation du jour",
+        "Nombre de chance": "Nombre de chance",
+        "Clin d'oeil": "Clin d'oeil"
+    },
+    "plugins\/horoscope\/desktop\/js\/horoscope.js": {
+        "Nom": "Nom",
+        "Tester": "Tester",
+        "Afficher": "Afficher"
+    }
+}
