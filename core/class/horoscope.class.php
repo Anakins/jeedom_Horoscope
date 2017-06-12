@@ -273,7 +273,7 @@ class horoscope extends eqLogic {
         }
         if (!array_key_exists($signe, self::getSignes())) {
             log::add('horoscope', 'debug', 'preUpdate: signe inexistant renseigne');
-            throw new Exception(__("Le signe renseigne n'existe pas.", __FILE__) . " '$signe'");
+            throw new Exception(__("Le signe renseigné n'existe pas.", __FILE__) . " '$signe'");
         }
     }
 
