@@ -32,18 +32,18 @@ class horoscope extends eqLogic {
      * est configuré dans les translations
      */
     protected static $_signes = [
-        'taureau',
-        'belier',
-        'poissons',
-        'vierge',
-        'capricorne',
-        'scorpion',
-        'sagittaire',
-        'verseau',
-        'cancer',
-        'balance',
-        'gemeaux',
-        'lion'
+        'taureau' => 'Taureau',
+        'belier' => 'Bélier',
+        'poissons' => 'Poissons',
+        'vierge' => 'Vierge',
+        'capricorne' => 'Capricorne',
+        'scorpion' => 'Scorpion',
+        'sagittaire' => 'Sagittaire',
+        'verseau' => 'Verseau',
+        'cancer' => 'Cancer',
+        'balance' => 'Balance',
+        'gemeaux' => 'Gémeaux',
+        'lion' => 'Lion'
     ];
 
     /**
@@ -271,7 +271,7 @@ class horoscope extends eqLogic {
             log::add('horoscope', 'debug', 'preUpdate: signe vide');
             throw new Exception(__("Vous n'avez configuré aucun signe.", __FILE__));
         }
-        if (!in_array($signe, self::getSignes())) {
+        if (!array_key_exists($signe, self::getSignes())) {
             log::add('horoscope', 'debug', 'preUpdate: signe inexistant renseigne');
             throw new Exception(__("Le signe renseigne n'existe pas.", __FILE__) . " '$signe'");
         }

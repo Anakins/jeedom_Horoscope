@@ -90,8 +90,8 @@ $eqLogics = eqLogic::byType('horoscope');
         					<label class="col-sm-3 control-label">{{Signe}}</label>
         					<div class="col-sm-3">
         						<select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="<?= horoscope::KEY_SIGNE ?>">
-<?php foreach (horoscope::getSignes() as $name) : ?>
-                                    <option value="<?= $name ?>"><?= __($name, __FILE__) ?></option>
+<?php foreach (horoscope::getSignes() as $key => $name) : ?>
+                                    <option value="<?= $key ?>"><?= __($name, __FILE__) ?></option>
 <?php endforeach; ?>
         						</select>
         					</div>
