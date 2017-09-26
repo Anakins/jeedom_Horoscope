@@ -1,0 +1,30 @@
+
+Versionen 1.0... 1.04 : 18. Dezember 2016 - 19. Dezember 2016
+--
+* Version intiales du plugin.
+
+
+Version 1.05: 19. Dezember 2016
+--
+* Update des Widgets
+
+
+Version 1.04: 18 Dezember 2016
+--
+* Mise à jour de l'horoscope apres chaque enregistrement de l'equipement
+
+
+Version 1.03: 18 Dezember 2016
+--
+* Suppression de la classe bootstrap
+
+
+Version 1.02: 18. Dezember 2016
+--
+* Actualisation de l'horoscope apres la creation de l'equipement
+
+
+Version 1.0: 18. Dezember 2016
+--
+* Supporte les 12 signes du zodiaque.
+* Erstveröffentlichung des Plugins

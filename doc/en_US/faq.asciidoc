@@ -1,0 +1,9 @@
+
+. Is the plugin relies on third-party API?
+--
+Le plugin n'utilise que du PHP  pour aller chercher les informations (après découpage) sur un site d'astrologie.
+--
+.Pourquoi est-il conseillé de régler la fréquence d'actualisation sur 5H du matin ?
+--
+Ne connaissant pas exactement l'heure d'actualisation du site internet, il est préférable de le faire tôt dans la matinée.
+--

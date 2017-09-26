@@ -1,0 +1,5 @@
+=== Mi Flora
+
+Plugin to get horoscope via a small sentence every day.
+
+Ceci peut-être très pratique afin de donner l'horoscope du jour à une personne (via une caméra Netatmo par exemple) par TTS tous les jours.
