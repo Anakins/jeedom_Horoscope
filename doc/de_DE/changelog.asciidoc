@@ -1,7 +1,12 @@
 
-Versionen 1.0... 1.04 : 18. Dezember 2016 - 19. Dezember 2016
+Versions 1.0 …​ 1.06 : 18 Decembre 2016 - 26 Septembre 2017
 --
 * Version intiales du plugin.
+
+
+Version 1.06: 26 Septembre 2017
+--
+* •Mise à jour info.json (pour jeedom 3)
 
 
 Version 1.05: 19. Dezember 2016
