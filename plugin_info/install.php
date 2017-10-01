@@ -18,17 +18,17 @@
 
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
-function template_install() {
-    
+function horoscope_install() {
+
 }
 
-function template_update() {
-    
+function horoscope_update() {
+
 }
 
 
-function template_remove() {
-    
+function horoscope_remove() {
+
 }
 
 ?>
