@@ -135,8 +135,7 @@ class horoscope extends eqLogic {
     public static function cron() {
         $today = date('H');
         $frequence = config::byKey('frequence', 'horoscope');
-        log::add('horoscope', 'debug', '--------------------------DEBUT HOROSCOPE CRON MINUTE-------------------------------------------');
-        log::add('horoscope', 'debug', "Fréquence : $frequence, heure actuelle : $today");
+       
 
         if ($frequence == '1min') {
             
