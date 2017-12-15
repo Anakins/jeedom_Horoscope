@@ -52,7 +52,7 @@ class horoscope extends eqLogic {
      * specifique
      */
     protected static $_theme_mapping = [
-        'clin_d_oeil' => 'horoscopeDuJour'
+        //clin_d_oeil' => 'horoscopeDuJour'
     ];
 
     /**
@@ -84,11 +84,12 @@ class horoscope extends eqLogic {
      * @param
      */
     public static function getHoroscopeForSigne($signe) {
-        log::add('horoscope', 'debug', 'Début de la fonction de calcul de l horoscope');
+        //log::add('horoscope', 'debug', 'Début de la fonction de calcul de l horoscope');
         if (empty($signe)) {
             throw new Exception("Erreur le parametre 'signe' est vide");
         }
-
+		log::add('horoscope', 'debug', 'Mise à jour du signe : '.$signe.' : ');
+		log::add('horoscope', 'debug', '-------------------------------------------');
         $url = sprintf(self::$_url_template, $signe);
         $xmlData = file_get_contents($url);
         $xml = new SimpleXMLElement($xmlData);
@@ -120,6 +121,7 @@ class horoscope extends eqLogic {
                         $theme_strip = strtolower(preg_replace('/[^\wéè]/', '_', $theme));
                         $horoscope['themes'][$theme] = $phrase;
                         $horoscope['themes_simple'][$theme_strip] = $phrase;
+						log::add('horoscope', 'debug', '--> Affectation : '.$theme.' => '.$phrase);
                     }
                 }
             }
@@ -137,14 +139,21 @@ class horoscope extends eqLogic {
         log::add('horoscope', 'debug', "Fréquence : $frequence, heure actuelle : $today");
 
         if ($frequence == '1min') {
-            log::add('horoscope', 'debug', 'Avant Lecture de chaque équipement');
+            
+			log::add('horoscope', 'info', '<----------------- MISE A JOUR DE L\'HOROSCOPE ----------------->');
+			log::add('horoscope', 'debug', 'Position : Début de la boucle pour chaque équipement');
             foreach (eqLogic::byType('horoscope', true) as $mi_horoscope) {
-                log::add('horoscope', 'debug', 'Après chaque élément');
+                //log::add('horoscope', 'debug', 'Après chaque élément');
 
                 //Procédure de calcul de l horoscope
+				
                 $mi_horoscope->updateHoroscope();
+				log::add('horoscope', 'debug', 'MISE A JOUR DU WIDGET');
+				log::add('horoscope', 'debug', '.');
                 $mi_horoscope->refreshWidget();
+				
             }
+			log::add('horoscope', 'debug', 'Position : Fin de boucle pour chaque équipement');
         }
     }
 
@@ -157,11 +166,15 @@ class horoscope extends eqLogic {
 
         if (($frequence == '1h') ||  (($today == '00') && ($frequence == 'minuit')) ||  (($today == '05') && ($frequence == '5h'))  ) {
             log::add('horoscope', 'debug', 'Avant Lecture de chaque équipement');
+			log::add('horoscope', 'info', '<----------------- MISE A JOUR DE L\'HOROSCOPE ----------------->');
+			log::add('horoscope', 'debug', 'Position : Avant Lecture de chaque équipement');
             foreach (eqLogic::byType('horoscope', true) as $mi_horoscope) {
                 log::add('horoscope', 'debug', 'Après chaque élément');
 
                 //Procédure de calcul de l horoscope
-                $mi_horoscope->updateHoroscope();
+			    $mi_horoscope->updateHoroscope();
+				log::add('horoscope', 'debug', 'Mise à jour du widget');
+				log::add('horoscope', 'debug', '.');
                 $mi_horoscope->refreshWidget();
             }
         }
@@ -179,7 +192,10 @@ class horoscope extends eqLogic {
         }
 
         $horoscope = self::getHoroscopeForSigne($signe);
-
+				log::add('horoscope', 'debug', '.');
+				log::add('horoscope', 'debug', 'Modification de : '.$this->getName().'.');
+				
+		
         // met a jour toutes les commandes contenants les phrases de l'horoscope
         foreach ($horoscope['themes'] as $theme_name => $message) {
             if (! is_string($message)) {
@@ -192,6 +208,7 @@ class horoscope extends eqLogic {
                 $horoscopeCmd->setName(__($theme_name, __FILE__));
                 $horoscopeCmd->setEqLogic_id($this->getId());
                 $horoscopeCmd->setLogicalId($theme_name);
+				log::add('horoscope', 'debug', 'Création de : '.$this->getName().'->'.$theme_name);
                 $horoscopeCmd->setIsVisible(false);
                 $horoscopeCmd->setEqType('horoscope');
                 $horoscopeCmd->setType('info');
@@ -214,6 +231,7 @@ class horoscope extends eqLogic {
                     $horoscopeCmd->setName(__($theme_name, __FILE__));
                     $horoscopeCmd->setEqLogic_id($this->getId());
                     $horoscopeCmd->setLogicalId($theme_name);
+					log::add('horoscope', 'debug', 'Création de : '.$this->getName().'->'.$theme_name);
                     $horoscopeCmd->setEqType('horoscope');
                     $horoscopeCmd->setType('info');
                     $horoscopeCmd->setSubType('string');
@@ -223,6 +241,7 @@ class horoscope extends eqLogic {
                 $horoscopeCmd->event($message);
             }
         }
+		log::add('horoscope', 'debug', '.');
     }
 
     /**
