@@ -45,7 +45,7 @@ $eqLogics = eqLogic::byType('horoscope');
 <?php foreach ($eqLogics as $eqLogic) : $opacity = ($eqLogic->getIsEnable()) ? '' : jeedom::getConfiguration('eqLogic:style:noactive'); ?>
             <div class="eqLogicDisplayCard cursor" data-eqLogic_id="<?= $eqLogic->getId() ?>" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px; <?= $opacity ?>">
                 <center>
-                    <img src="plugins/horoscope/doc/images/PNG/<?= $eqLogic->getConfiguration(horoscope::KEY_SIGNE) ?>.png" height="105" width="95" />';
+                    <img src="plugins/horoscope/doc/images/PNG/<?= $eqLogic->getConfiguration(horoscope::KEY_SIGNE) ?>.png" height="105" width="95" />
                 </center>
                 <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;"><center><?= $eqLogic->getHumanName(true, true) ?></center></span>
             </div>
