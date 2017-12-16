@@ -168,11 +168,11 @@ class horoscope extends eqLogic {
 			log::add('horoscope', 'info', '<----------------- MISE A JOUR DE L\'HOROSCOPE ----------------->');
 			log::add('horoscope', 'debug', 'Position : Avant Lecture de chaque équipement');
             foreach (eqLogic::byType('horoscope', true) as $mi_horoscope) {
-                log::add('horoscope', 'debug', 'Après chaque élément');
+                //log::add('horoscope', 'debug', 'Après chaque élément');
 
                 //Procédure de calcul de l horoscope
 			    $mi_horoscope->updateHoroscope();
-				log::add('horoscope', 'debug', 'Mise à jour du widget');
+				log::add('horoscope', 'debug', 'MISE A JOUR DU WIDGET');
 				log::add('horoscope', 'debug', '.');
                 $mi_horoscope->refreshWidget();
             }
@@ -192,7 +192,7 @@ class horoscope extends eqLogic {
 
         $horoscope = self::getHoroscopeForSigne($signe);
 				log::add('horoscope', 'debug', '.');
-				log::add('horoscope', 'debug', 'Modification de : '.$this->getName().'.');
+				log::add('horoscope', 'debug', 'Modification de l\'équipement : '.$this->getName().'.');
 				
 		
         // met a jour toutes les commandes contenants les phrases de l'horoscope
