@@ -1,15 +1,15 @@
-Version 1.1: 11 Juin 2017
+Version 1.1: 11. Juni 2017
 --
 * Amélioration du parsing de l'horoscope depuis la source
 * Ajout des phrases du jour pour chaque thème disponible
 * Simplification et refactorisation du code source
 
-Versions 1.0 …​ 1.06 : 18 Decembre 2016 - 26 Septembre 2017
+Versionen 1.0... 1.06: 18 Dezember 2016 - 26. September 2017
 --
 * Version intiales du plugin.
 
 
-Version 1.06: 26 Septembre 2017
+Version 1.06: 26. September 2017
 --
 * •Mise à jour info.json (pour jeedom 3)
 
