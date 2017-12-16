@@ -117,6 +117,8 @@ class horoscope extends eqLogic {
                 if (preg_match('/^Horoscope\s*[^ ]+\s*-\s*(.*)\n(.*)/', $paragraphe, $matches) > 0) {
                     if (count($matches) == 3) {
                         $theme = $matches[1];
+						$theme = str_replace(' ','', $theme);
+                        $theme = str_replace('\'','', $theme);
                         $phrase = $matches[2];
                         $theme_strip = strtolower(preg_replace('/[^\wéè]/', '_', $theme));
                         $horoscope['themes'][$theme] = $phrase;
