@@ -88,7 +88,7 @@ class horoscope extends eqLogic {
         if (empty($signe)) {
             throw new Exception("Erreur le parametre 'signe' est vide");
         }
-		log::add('horoscope', 'debug', 'Mise à jour du signe : '.$signe.' : ');
+		log::add('horoscope', 'debug', 'Mise à jour du signe => '.$signe.' : ');
 		log::add('horoscope', 'debug', '-------------------------------------------');
         $url = sprintf(self::$_url_template, $signe);
         $xmlData = file_get_contents($url);
@@ -166,7 +166,7 @@ class horoscope extends eqLogic {
         log::add('horoscope', 'debug', 'Fréquence : "'.$frequence.'" , heure Actuelle : '.$today);
 
         if (($frequence == '1h') ||  (($today == '00') && ($frequence == 'minuit')) ||  (($today == '05') && ($frequence == '5h'))  ) {
-            log::add('horoscope', 'debug', 'Avant Lecture de chaque équipement');
+            //log::add('horoscope', 'debug', 'Avant Lecture de chaque équipement');
 			log::add('horoscope', 'info', '<----------------- MISE A JOUR DE L\'HOROSCOPE ----------------->');
 			log::add('horoscope', 'debug', 'Position : Avant Lecture de chaque équipement');
             foreach (eqLogic::byType('horoscope', true) as $mi_horoscope) {
