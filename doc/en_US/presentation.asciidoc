@@ -1,5 +1,8 @@
-=== Mi Flora
+=== Horoscope
 
-Plugin to get horoscope via a small sentence every day.
+Plugin permettant de récupérer son horoscope tous les jours.
 
-Ceci peut-être très pratique afin de donner l'horoscope du jour à une personne (via une caméra Netatmo par exemple) par TTS tous les jours.
+Plusieurs phrases sont disponibles chaque jours en fonction de thèmes comme Amour,Argent,Famille,Santé,...
+Une phrase symbolique est également disponible.
+
+Ceci peut-être très pratique afin de donner l'horoscope du jour à une personne (via une caméra Netatmo par exemple) ou par TTS tous les jours.
