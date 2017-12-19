@@ -1,12 +1,12 @@
 {
     "plugins\/horoscope\/plugin_info\/info.xml": {
         "Plugin Horoscope .....": "Plugin Horoscope .....",
-        "Aucune": "Aucune"
+        "Aucune": "Keine"
     },
     "plugins\/horoscope\/plugin_info\/configuration.php": {
         "Fréquence de recuperation des données": "Fréquence de recuperation des données",
         "à 5H00 du matin (conseillé)": "à 5H00 du matin (conseillé)",
-        "Toutes les 1 heure": "Toutes les 1 heure",
+        "Toutes les 1 heure": "jede Stunde",
         "à minuit": "à minuit",
         "Toutes les 1 minute (pour les tests)": "Toutes les 1 minute (pour les tests)"
     },
