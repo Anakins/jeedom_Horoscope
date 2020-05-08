@@ -192,7 +192,7 @@ class horoscope extends eqLogic {
         $this->updateSigne($order);
 
         //Fonction rafraichir
-        /*$refresh = $this->getCmd(null, 'refresh');
+        $refresh = $this->getCmd(null, 'refresh');
         if (!is_object($refresh)) {
             $refresh = new horoscopeCmd();
             $refresh->setLogicalId('refresh');
@@ -203,7 +203,7 @@ class horoscope extends eqLogic {
         $refresh->setEqLogic_id($this->getId());
         $refresh->setType('action');
         $refresh->setSubType('other');
-        $refresh->save();*/
+        $refresh->save();
 
     }
 
