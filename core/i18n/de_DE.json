@@ -1,0 +1,70 @@
+{
+    "plugins\/horoscope\/plugin_info\/info.xml": {
+        "Plugin Horoscope .....": "Plugin Horoscope .....",
+        "Aucune": "Keine"
+    },
+    "plugins\/horoscope\/plugin_info\/configuration.php": {
+        "Fréquence de recuperation des données": "Fréquence de recuperation des données",
+        "à 5H00 du matin (conseillé)": "à 5H00 du matin (conseillé)",
+        "Toutes les 1 heure": "jede Stunde",
+        "à minuit": "à minuit",
+        "Toutes les 1 minute (pour les tests)": "Toutes les 1 minute (pour les tests)"
+    },
+    "plugins\/horoscope\/desktop\/php\/horoscope.php": {
+        "Ajouter un template": "Vorlage hinzufügen",
+        "Rechercher": "Suchen",
+        "Mes horoscopes": "Mes horoscopes",
+        "Gestion": "Verwaltung",
+        "Ajouter": "Hinzufügen",
+        "Configuration": "Konfiguration",
+        "Général": "Général",
+        "Nom de la personne": "Name der Person",
+        "Objet parent": "Elternobjekt",
+        "Aucun": "Keine",
+        "Signe": "Zeichen",
+        "Activer": "Aktivieren",
+        "Visible": "Sichtbar",
+        "horoscope": "horoscope",
+        "Commandes": "Befehle",
+        "Nom": "Name",
+        "Type": "Typ",
+        "Action": "Action",
+        "Supprimer": "Löschen",
+        "Sauvegarder": "Speichern",
+        "taureau": "Taureau",
+        "belier": "Bélier",
+        "poissons": "Poissons",
+        "vierge": "Vierge",
+        "capricorne": "Capricorne",
+        "scorpion": "Scorpion",
+        "sagittaire": "Sagittaire",
+        "verseau": "Verseau",
+        "cancer": "Cancer",
+        "balance": "Balance",
+        "gemeaux": "Gémeaux",
+        "lion": "Lion",
+        "Ajouter un horoscope": " Horoskop hinzufügen",
+        "Configuration avancée": "Erweiterte Konfiguration",
+        "Equipement": "Gerät",
+        "Paramètres": "Parameter"
+    },
+    "plugins\/horoscope\/core\/class\/horoscope.class.php": {
+        "horoscopeDuJour": "horoscopeDuJour",
+        "signe": "Zeichen",
+        "Vous n'avez configuré aucun signe.": "Sie haben keine Zeichen konfiguriert.",
+        "Amour": "Amour",
+        "Argent": "Argent",
+        "Santé": "Gesundheit",
+        "Travail": "Travail",
+        "Famille": "Famille",
+        "Vie sociale": "Vie sociale",
+        "Citation du jour": "Citation du jour",
+        "Nombre de chance": "Anzahl der Chancen",
+        "Clin d'oeil": "Clin d'oeil"
+    },
+    "plugins\/horoscope\/desktop\/js\/horoscope.js": {
+        "Nom": "Name",
+        "Tester": "Tester",
+        "Afficher": "Afficher"
+    }
+}

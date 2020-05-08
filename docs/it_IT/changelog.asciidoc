@@ -1,0 +1,40 @@
+Version 1.1: 11 Juin 2017
+--
+* Amélioration du parsing de l'horoscope depuis la source
+* Ajout des phrases du jour pour chaque thème disponible
+* Simplification et refactorisation du code source
+
+Versions 1.0 …​ 1.06 : 18 Decembre 2016 - 26 Septembre 2017
+--
+* Version intiales du plugin.
+
+
+Version 1.06: 26 Septembre 2017
+--
+* •Mise à jour info.json (pour jeedom 3)
+
+
+Version 1.05: 19 Decembre 2016
+--
+* Mise à jour du widget
+
+
+Version 1.04: 18 Decembre 2016
+--
+* Mise à jour de l'horoscope apres chaque enregistrement de l'equipement
+
+
+Version 1.03: 18 Decembre 2016
+--
+* Suppression de la classe bootstrap
+
+
+Version 1.02: 18 Decembre 2016
+--
+* Actualisation de l'horoscope apres la creation de l'equipement
+
+
+Version 1.0: 18 Decembre 2016
+--
+* Supporte les 12 signes du zodiaque.
+* Premiere publication du plugin
