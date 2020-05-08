@@ -247,10 +247,10 @@ class horoscope extends eqLogic {
 
                 log::add('horoscope', 'debug', '│ Création de la commande : '.$this->getName().'->'.$theme_name);
     		}
-            //$horoscopeCmd->event($message);
-            //$horoscopeCmd->setEqLogic_id($this->id);
-            //$horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
-            //$horoscopeCmd->save();
+            $horoscopeCmd->event($message);
+            $horoscopeCmd->setEqLogic_id($this->id);
+            $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
+            $horoscopeCmd->save();
         }
         // Mise à jour les commandes specifique declarée dans le tableau de mapping
          foreach ($horoscope['themes_simple'] as $theme_name => $message) {
@@ -276,10 +276,10 @@ class horoscope extends eqLogic {
 
                     log::add('horoscope', 'debug', '│ Création de la commande : '.$this->getName().'->'.$theme_name);
         		}
-                //$horoscopeCmd->event($message);
-                //$horoscopeCmd->setEqLogic_id($this->id);
-                //$horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
-                //$horoscopeCmd->save();
+                $horoscopeCmd->event($message);
+                $horoscopeCmd->setEqLogic_id($this->id);
+                $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
+                $horoscopeCmd->save();
             }
         }
 
@@ -310,7 +310,7 @@ class horoscope extends eqLogic {
 
             log::add('horoscope', 'debug', '│ Création de la commande Signe');
         }
-        //$horoscopeCmd->event($signe);
+        $horoscopeCmd->event($signe);
         $horoscopeCmd->setEqLogic_id($this->id);
         $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
         $horoscopeCmd->save();
