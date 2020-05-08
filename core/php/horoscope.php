@@ -39,7 +39,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
     <div class="col-xs-12 eqLogic" style="display: none;">
         <div class="input-group pull-right" style="display:inline-flex">
             <span class="input-group-btn">
-                <a class="btn btn-default btn-sm eqLogicAction roundedLeft" data-action="configure"><i class="fas fa-cogs"></i> {{Configuration avancée}}</a><a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}}</a><a class="btn btn-danger btn-sm eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>
+                <a class="btn btn-default btn-sm eqLogicAction roundedLeft" data-action="configure"><i class="fas fa-cogs"></i> {{Configuration avancée}}</a><a class="btn btn-default btn-sm eqLogicAction" data-action="copy"><i class="fas fa-copy"></i> {{Dupliquer}}</a><a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}}</a><a class="btn btn-danger btn-sm eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>
             </span>
         </div>
 
@@ -98,7 +98,10 @@ $eqLogics = eqLogic::byType($plugin->getId());
                 <form class="form-horizontal col-sm-2">
                     <fieldset>
                         <div class="form-group">
-                            <img src="plugins/horoscope/config/img/<?= $eqLogic->getConfiguration(horoscope::KEY_SIGNE) ?>.png" style="width:120px;" />
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-8">
+                                <img src="core/img/no_image.gif" data-original=".png" id="img_device" style="width:120px;" />
+                            </div>
                         </div>
                     </fieldset>
                 </form>
@@ -142,9 +145,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
                     <thead>
                         <tr>
                             <th width="50px"> ID</th>
-                            <th width="450px">{{Nom}}</th>
-                            <th>{{Valeur}}</th>
-                            <th>{{Unité}}</th>
+                            <th width="650px">{{Nom}}</th>
                             <th>{{Paramètres}}</th>
                             <th width="120px">{{Options}}</th>
                             <th width="40px"></th>
