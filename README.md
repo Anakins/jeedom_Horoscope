@@ -1,3 +1,4 @@
+<img align="right" src="plugin_info/baro_icon.png" width="150">
 # jeedom_Horoscope
 Plugin Horoscope pour Jeedom - En développement.
 

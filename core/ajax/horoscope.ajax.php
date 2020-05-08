@@ -24,6 +24,32 @@ try {
         throw new Exception(__('401 - Accès non autorisé', __FILE__));
     }
 
+    if (init('action') == 'gethoroscope') {
+        $horoscope = horoscope::byId(init('id'));
+        if (!is_object($horoscope)) {
+            throw new Exception(__('Horoscope inconnu verifier l\'id', __FILE__));
+        }
+        $return = utils::o2a($horoscope);
+        $return['cmd'] = array();
+        foreach ($horoscope->getCmd() as $cmd) {
+            $cmd_info = utils::o2a($cmd);
+            $cmd_info['value'] = $cmd->execCmd(null, 0);
+            $return['cmd'][] = $cmd_info;
+        }
+        ajax::success($return);
+     }
+
+    if (init('action') == 'autoDEL_eq') {
+		$eqLogic = horoscope::byId(init('id'));
+		if (!is_object($eqLogic)) {
+			throw new Exception(__('Horoscope eqLogic non trouvé : ', __FILE__) . init('id'));
+        }
+        foreach ($eqLogic->getCmd() as $cmd) {
+            $cmd->remove();
+            $cmd->save();
+        }
+        ajax::success();
+    }
 
 
     throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));

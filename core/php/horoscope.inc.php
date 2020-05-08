@@ -1,26 +1,165 @@
 <?php
+if (!isConnect('admin')) {
+    throw new Exception('{{401 - Accès non autorisé}}');
+}
+$plugin = plugin::byId('horoscope');
+sendVarToJS('eqType', $plugin->getId());
+$eqLogics = eqLogic::byType($plugin->getId());
+?>
 
-/* This file is part of Jeedom.
-*
-* Jeedom is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Jeedom is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
-*/
+<div class="row row-overflow">
+    <div class="col-xs-12 eqLogicThumbnailDisplay">
+        <legend><i class="fas fa-cog"></i> {{Gestion}}</legend>
+        <div class="eqLogicThumbnailContainer">
+            <div class="cursor eqLogicAction logoPrimary" data-action="add">
+                <i class="fas fa-plus-circle"></i>
+                <br />
+                <span>{{Ajouter}}</span>
+            </div>
+            <div class="cursor eqLogicAction logoSecondary" data-action="gotoPluginConf">
+                <i class="fas fa-wrench"></i><br>
+                <span>{{Configuration}}</span>
+            </div>
+        </div>
+        <legend><i class="fas fa-chart-bar"></i> {{Mes Horoscopes}}</legend>
+        <input class="form-control" placeholder="{{Rechercher}}" id="in_searchEqlogic" />
+        <div class="eqLogicThumbnailContainer">
+            <?php
+            foreach ($eqLogics as $eqLogic) {
+                $opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
+                echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '" >';
+                echo '<img src="' . $plugin->getPathImgIcon() . '" />';
+                echo '<br>';
+                echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
+                echo '</div>';
+            }
+            ?>
+        </div>
+    </div>
+    <div class="col-xs-12 eqLogic" style="display: none;">
+        <div class="input-group pull-right" style="display:inline-flex">
+            <span class="input-group-btn">
+                <a class="btn btn-default btn-sm eqLogicAction roundedLeft" data-action="configure"><i class="fas fa-cogs"></i> {{Configuration avancée}}</a><a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}}</a><a class="btn btn-danger btn-sm eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>
+            </span>
+        </div>
 
-require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
-/*
- * Non obligatoire mais peut être utilisé si vous voulez charger en même temps que votre
- * plugin des librairies externes (ne pas oublier d'adapter plugin_info/info.xml).
- * 
- * 
- */
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
+            <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Equipement}}</a></li>
+            <li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-list-alt"></i> {{Commandes}}</a></li>
+        </ul>
+        <div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
+            <div role="tabpanel" class="tab-pane active" id="eqlogictab">
+                <br />
+                <form class="form-horizontal col-sm-10">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{Nom de l'équipement}}</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
+                                <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l\'équipement}}" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{Objet parent}}</label>
+                            <div class="col-sm-3">
+                                <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
+                                    <option value="">{{Aucun}}</option>
+                                    <?php
+                                    foreach (jeeObject::all() as $object) {
+                                        echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{Catégorie}}</label>
+                            <div class="col-sm-10">
+                                <?php
+                                foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
+                                    echo '<label class="checkbox-inline">';
+                                    echo '<input type="checkbox" class="eqLogicAttr" data-l1key="category" data-l2key="' . $key . '" />' . $value['name'];
+                                    echo '</label>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-10">
+                                <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked />{{Activer}}</label>
+                                <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked />{{Visible}}</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <form class="form-horizontal col-sm-2">
+                    <fieldset>
+                        <div class="form-group">
+                            <img src="plugins/horoscope/config/img/<?= $eqLogic->getConfiguration(horoscope::KEY_SIGNE) ?>.png" style="width:120px;" />
+                        </div>
+                    </fieldset>
+                </form>
+                <br />
+
+                <hr>
+
+                <legend><i class="fas fa-cog"></i> {{Paramètres}}</legend>
+                <form class="form-horizontal col-sm-10">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{Signe}}</label>
+                            <div class="col-sm-3">
+                                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="signe">
+                                    <?php foreach (horoscope::getSignes() as $key => $name) : ?>
+                                    <option value="<?= $key ?>"><?= __($name, __FILE__) ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{Auto-actualisation (cron)}}</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="autorefresh" placeholder="{{Auto-actualisation (cron)}}" />
+                                    <span class="input-group-btn">
+                                        <a class="  cursor jeeHelper" data-helper="cron">
+                                            <i class="fas fa-question-circle"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </form>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="commandtab">
+                <br />
+                <table id="table_cmd" class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th width="50px"> ID</th>
+                            <th width="450px">{{Nom}}</th>
+                            <th>{{Valeur}}</th>
+                            <th>{{Unité}}</th>
+                            <th>{{Paramètres}}</th>
+                            <th width="120px">{{Options}}</th>
+                            <th width="40px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<?php
+	include_file('desktop', 'horoscope', 'js', 'horoscope');
+	include_file('core', 'plugin.template', 'js');
 ?>

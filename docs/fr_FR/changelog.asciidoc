@@ -4,7 +4,7 @@ Version 1.1: 11 Juin 2017
 * Ajout des phrases du jour pour chaque thème disponible
 * Simplification et refactorisation du code source
 
-Versions 1.0 …​ 1.06 : 18 Decembre 2016 - 26 Septembre 2017
+Versions 1.0 … 1.06 : 18 Decembre 2016 - 26 Septembre 2017
 --
 * Version intiales du plugin.
 
