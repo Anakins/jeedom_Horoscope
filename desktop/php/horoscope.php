@@ -25,22 +25,15 @@ $eqLogics = eqLogic::byType($plugin->getId());
         <input class="form-control" placeholder="{{Rechercher}}" id="in_searchEqlogic" />
         <div class="eqLogicThumbnailContainer">
             <?php
-			foreach ($eqLogics as $eqLogic) {
-				$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
-                if ($eqLogic->getConfiguration('signe') != ''){
-                    echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '" >';
-                    if ($eqLogic->getConfiguration('signe') != 'tendance') {
-                        echo '<img src="plugins/horoscope/core/config/img/' . $eqLogic->getConfiguration('signe') . '.png' . '"/>';
-                    } else {
-                        echo '<img src="' . $plugin->getPathImgIcon() . '"/>';
-                        
-                    }
-                    echo '<br>';
-                    echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
-                    echo '</div>';
-                }
-			}
-			?>
+            foreach ($eqLogics as $eqLogic) {
+                $opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
+                echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '" >';
+                echo '<img src="' . $plugin->getPathImgIcon() . '" />';
+                echo '<br>';
+                echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
+                echo '</div>';
+            }
+            ?>
         </div>
     </div>
     <div class="col-xs-12 eqLogic" style="display: none;">
