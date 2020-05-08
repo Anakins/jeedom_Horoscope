@@ -1,5 +1,7 @@
-<img align="right" src="plugin_info/baro_icon.png" width="150">
-# jeedom_Horoscope
+<img align="right" src="plugin_info/horoscope_icon.png" width="150">
+
+# Jeedom - Horoscope
+
 Plugin Horoscope pour Jeedom - En développement.
 
 Ce plugin a pour but de pouvoir donner l'horoscope chaque jour via une petite phrase.
