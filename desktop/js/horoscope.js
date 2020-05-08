@@ -1,4 +1,3 @@
-
 /* This file is part of Jeedom.
  *
  * Jeedom is free software: you can redistribute it and/or modify
@@ -27,7 +26,7 @@ $("#table_cmd").sortable({
 
 
 $('.eqLogicAttr[data-l1key=configuration][data-l2key=signe]').on('change', function () {
-    if ($(this).value() == 'belier') {
+    if ($(this).value() != '') {
         $('#img_device').attr("src", 'plugins/horoscope/core/config/img/' + $(this).value() + '.png');
     } else {
         $('#img_device').attr("src", 'plugins/horoscope/plugin_info/horoscope_icon.png');
@@ -62,9 +61,6 @@ function addCmdToTable(_cmd) {
         tr += '</td>';
         tr += '<td>';
         tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" checked/>{{Afficher}}</label></span> ';
-        if (_cmd.subType == "numeric") {
-            tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isHistorized" checked/>{{Historiser}}</label></span> ';
-        }
         tr += '</td>';
         tr += '<td>';
         if (is_numeric(_cmd.id)) {
