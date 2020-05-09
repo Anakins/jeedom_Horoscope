@@ -160,7 +160,7 @@ class horoscope extends eqLogic {
 
 
     public function refresh() {
-        $this->getinformation();
+        $this->getinformations();
     }
 
     public function preUpdate() {
@@ -328,7 +328,7 @@ class horoscope extends eqLogic {
         $this->getInformations();
     }
 
-    public function getInformation() {
+    public function getInformations() {
         if (!$this->getIsEnable()) return;
 
         if ($this->getConfiguration('autorefresh') == '') {
