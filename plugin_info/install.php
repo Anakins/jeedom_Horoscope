@@ -20,15 +20,31 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 function horoscope_install() {
 
+    $cron = cron::byClassAndFunction('horoscope', 'pull');
+    if (is_object($cron)) {
+        $cron->remove();
+    }
+
+    config::save('functionality::cron::enable', 1, 'horoscope');
+
 }
 
 function horoscope_update() {
 
+    $cron = cron::byClassAndFunction('horoscope', 'pull');
+    if (is_object($cron)) {
+        $cron->remove();
+    }
+
+    config::save('functionality::cron::enable', 1, 'horoscope');
+
 }
 
-
 function horoscope_remove() {
-
+    $cron = cron::byClassAndFunction('horoscope', 'pull');
+    if (is_object($cron)) {
+        $cron->remove();
+    }
 }
 
 ?>
