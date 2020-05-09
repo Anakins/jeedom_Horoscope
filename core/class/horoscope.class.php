@@ -59,7 +59,7 @@ class horoscope extends eqLogic {
      */
     public static $_url_template = 'http://www.asiaflash.com/horoscope/rss_horojour_%s.xml';
 
-    public static $_widgetPossibility = array('custom' => true);
+   // public static $_widgetPossibility = array('custom' => true);
 
 
     /*     * *************************Attributs****************************** */
@@ -134,7 +134,7 @@ class horoscope extends eqLogic {
 
 
     public static function cron() {
-	foreach (eqLogic::byType(__CLASS__, true) as $eqLogic) {
+	foreach (eqLogic::byType('horoscope', true) as $eqLogic) {
 		$autorefresh = $eqLogic->getConfiguration('autorefresh', '');
         log::add('horoscope', 'debug', '│ Autorefresh : ' . $autorefresh);
 		if ($autorefresh == '')  continue;
@@ -144,7 +144,7 @@ class horoscope extends eqLogic {
 				$eqLogic->refresh();
 			}
 		} catch (Exception $e) {
-			log::add(__CLASS__, 'error', __('Expression cron non valide pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $autorefresh);
+			log::add('horoscope', 'error', __('Expression cron non valide pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $autorefresh);
 		}
 	}
 }
@@ -160,9 +160,7 @@ class horoscope extends eqLogic {
 
 
     public function refresh() {
-        foreach (eqLogic::byType('horoscope') as $horoscope) {
-            $horoscope->getInformations();
-        }
+        $this->getinformation();
     }
 
     public function preUpdate() {
@@ -190,7 +188,7 @@ class horoscope extends eqLogic {
         $order = 1;
 
         /*  ********************** Lancement création Signe *************************** */
-        $this->updateSigne($order);
+        //$this->updateSigne($order);
 
         //Fonction rafraichir
         $refresh = $this->getCmd(null, 'refresh');
@@ -212,7 +210,7 @@ class horoscope extends eqLogic {
     /**
      * Recuperer l'horoscope du jour et met à jour les commandes
      */
-    public function updateHoroscope() {
+    public function getupdateHoroscope() {
 
 
         $signe = $this->getConfiguration(self::KEY_SIGNE);
@@ -339,11 +337,11 @@ class horoscope extends eqLogic {
         log::add('horoscope', 'debug', '┌───────── MISE A JOUR : '.$_eqName );
 
         /*  ********************** Lancement création Signe *************************** */
-        $this->updateSigne($order);
+        //$this->updateSigne($order);
 
 
         /*     * ********************** Update Horoscope*************************** */
-        $this->updateHoroscope();
+       // $this->getupdateHoroscope();
 
         log::add('horoscope', 'debug', '└─────────');
     }
