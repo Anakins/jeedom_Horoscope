@@ -114,13 +114,13 @@ class horoscope extends eqLogic {
                 if (preg_match('/^Horoscope\s*[^ ]+\s*-\s*(.*)\n(.*)/', $paragraphe, $matches) > 0) {
                     if (count($matches) == 3) {
                         $theme = $matches[1];
-						$theme = str_replace(' ','', $theme);
+                        $theme = str_replace(' ','', $theme);
                         $theme = str_replace('\'','', $theme);
                         $phrase = $matches[2];
                         $theme_strip = strtolower(preg_replace('/[^\wéè]/', '_', $theme));
                         $horoscope['themes'][$theme] = $phrase;
                         $horoscope['themes_simple'][$theme_strip] = $phrase;
-						log::add('horoscope', 'debug', '│ Mise à jour commande : '.$theme.' : '.$phrase);
+                        log::add('horoscope', 'debug', '│ Mise à jour commande : '.$theme.' : '.$phrase);
                     }
                 }
             }
@@ -140,27 +140,20 @@ class horoscope extends eqLogic {
             if ($autorefresh == '')  continue;
             try {
                 $cron = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
-			if ($cron->isDue()) {
-				$eqLogic->refresh();
-			}
-		} catch (Exception $e) {
-			log::add('horoscope', 'error', __('Expression cron non valide pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $autorefresh);
-		}
-	}
+            if ($cron->isDue()) {
+                $eqLogic->getinformations();
+            }
+        } catch (Exception $e) {
+            log::add('horoscope', 'error', __('Expression cron non valide pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $autorefresh);
+        }
+    }
 }
 
 
 
     /*     * *********************Méthodes d'instance************************* */
     public function preSave() {
-		if ($this->getConfiguration('autorefresh') == '') {
-			$this->setConfiguration('autorefresh', '0 5 * * *');
-		}
-	}
 
-
-    public function refresh() {
-        $this->getinformations();
     }
 
     public function preUpdate() {
@@ -200,12 +193,11 @@ class horoscope extends eqLogic {
             $refresh->setIsVisible(1);
             $refresh->setName(__('Rafraichir', __FILE__));
             $refresh->setOrder($order);
+            $refresh->setEqLogic_id($this->getId());
+            $refresh->setType('action');
+            $refresh->setSubType('other');
+            $refresh->save();
         }
-        $refresh->setEqLogic_id($this->getId());
-        $refresh->setType('action');
-        $refresh->setSubType('other');
-        $refresh->save();
-
     }
 
 
@@ -213,7 +205,6 @@ class horoscope extends eqLogic {
      * Recuperer l'horoscope du jour et met à jour les commandes
      */
     public function getupdateHoroscope() {
-
 
         $signe = $this->getConfiguration(self::KEY_SIGNE);
         log::add('horoscope', 'debug', '│ Signe : '.$signe);
@@ -227,33 +218,29 @@ class horoscope extends eqLogic {
 
         // met a jour toutes les commandes contenants les phrases de l'horoscope
         foreach ($horoscope['themes'] as $theme_name => $message) {
-            if (! is_string($message)) {
+            if (!is_string($message)) {
                 continue;
-                log::add('horoscope', 'debug', '│ Modification de l\'équipement : '.$this->getName() .$message);
             }
+            log::add('horoscope', 'debug', '│ Modification de l\'équipement : '.$this->getName() .$message);
             // création de la commande si elle n'existe pas encore
             $horoscopeCmd = $this->getCmd(null, $theme_name);
-    		if (!is_object($horoscopeCmd)) {
-    			$horoscopeCmd = new horoscopeCmd();
+            if (!is_object($horoscopeCmd)) {
+                $horoscopeCmd = new horoscopeCmd();
                 $horoscopeCmd->setName(__($theme_name, __FILE__));
                 $horoscopeCmd->setEqLogic_id($this->id);
                 $horoscopeCmd->setLogicalId($theme_name);
-                $horoscopeCmd->setConfiguration('data', $theme_name);
                 $horoscopeCmd->setType('info');
                 $horoscopeCmd->setSubType('string');
                 $horoscopeCmd->setIsVisible(0);
                 $horoscopeCmd->setIsHistorized(0);
-                $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
                 $horoscopeCmd->setTemplate('dashboard','core::multiline');
                 $horoscopeCmd->setTemplate('mobile','core::multiline');
                 $horoscopeCmd->save();
 
                 log::add('horoscope', 'debug', '│ Création de la commande : '.$this->getName().'->'.$theme_name);
-    		}
-            $horoscopeCmd->event($message);
-            $horoscopeCmd->setEqLogic_id($this->id);
-            $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
-            $horoscopeCmd->save();
+            }
+            $this->checkAndUpdateCmd($theme_name, $message);
+
         }
         // Mise à jour les commandes specifique declarée dans le tableau de mapping
          foreach ($horoscope['themes_simple'] as $theme_name => $message) {
@@ -262,27 +249,23 @@ class horoscope extends eqLogic {
                 $specific_commande_name = self::$_theme_mapping[$theme_name];
 
                 $horoscopeCmd = $this->getCmd(null, $specific_commande_name);
-        		if (!is_object($horoscopeCmd)) {
-        			$horoscopeCmd = new horoscopeCmd();
+                if (!is_object($horoscopeCmd)) {
+                    $horoscopeCmd = new horoscopeCmd();
                     $horoscopeCmd->setName(__($theme_name, __FILE__));
                     $horoscopeCmd->setEqLogic_id($this->id);
-                    $horoscopeCmd->setLogicalId($theme_name);
-                    $horoscopeCmd->setConfiguration('data', $theme_name);
+                    $horoscopeCmd->setLogicalId($specific_commande_name);
                     $horoscopeCmd->setType('info');
                     $horoscopeCmd->setSubType('string');
                     $horoscopeCmd->setIsHistorized(0);
                     $horoscopeCmd->setIsVisible(0);
-					$horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
+                    $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
                     $horoscopeCmd->setTemplate('dashboard','core::multiline');
                     $horoscopeCmd->setTemplate('mobile','core::multiline');
                     $horoscopeCmd->save();
 
                     log::add('horoscope', 'debug', '│ Création de la commande : '.$this->getName().'->'.$theme_name);
-        		}
-                $horoscopeCmd->event($message);
-                $horoscopeCmd->setEqLogic_id($this->id);
-                $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
-                $horoscopeCmd->save();
+                }
+                $this->checkAndUpdateCmd($specific_commande_name, $message);
             }
         }
 
@@ -299,26 +282,16 @@ class horoscope extends eqLogic {
             $horoscopeCmd->setName(__('signe', __FILE__));
             $horoscopeCmd->setEqLogic_id($this->id);
             $horoscopeCmd->setLogicalId('signe');
-            $horoscopeCmd->setConfiguration('data', 'signe');
             $horoscopeCmd->setType('info');
             $horoscopeCmd->setSubType('string');
             $horoscopeCmd->setIsHistorized(0);
             $horoscopeCmd->setIsVisible(1);
-            $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
             $horoscopeCmd->setTemplate('dashboard','core::multiline');
             $horoscopeCmd->setTemplate('mobile','core::multiline');
-            $horoscopeCmd->setOrder($order);
-            $order ++;
             $horoscopeCmd->save();
-
             log::add('horoscope', 'debug', '│ Création de la commande Signe');
         }
-        $horoscopeCmd->event($signe);
-        $horoscopeCmd->setEqLogic_id($this->id);
-        $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
-        $horoscopeCmd->save();
-
-        return $order;
+        $this->checkAndUpdateCmd('signe', $signe);
     }
 
 
@@ -330,10 +303,6 @@ class horoscope extends eqLogic {
 
     public function getInformations() {
         if (!$this->getIsEnable()) return;
-
-        if ($this->getConfiguration('autorefresh') == '') {
-			throw new Exception(__('Le champs ne peut être vide', __FILE__));
-		}
 
         $_eqName = $this->getName();
         log::add('horoscope', 'debug', '┌───────── MISE A JOUR : '.$_eqName );
@@ -395,7 +364,7 @@ class horoscopeCmd extends cmd {
             $this->getEqLogic()->getInformations();
             log::add('horoscope', 'debug', ' ─────────> FIN ACTUALISATION MANUELLE');
             return;
-		}
+        }
     }
 
 }
