@@ -138,8 +138,8 @@ class horoscope extends eqLogic {
             $autorefresh = $eqLogic->getConfiguration('autorefresh', '');
             log::add('horoscope', 'debug', '│ Autorefresh : ' . $autorefresh);
             if ($autorefresh == '')  continue;
-		try {
-			$cron = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
+            try {
+                $cron = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
 			if ($cron->isDue()) {
 				$eqLogic->refresh();
 			}
@@ -190,7 +190,7 @@ class horoscope extends eqLogic {
         $order = 1;
 
         /*  ********************** Lancement création Signe *************************** */
-        //$this->updateSigne($order);
+        $this->updateSigne();
 
         //Fonction rafraichir
         $refresh = $this->getCmd(null, 'refresh');
@@ -286,7 +286,7 @@ class horoscope extends eqLogic {
 
     }
 
-    public function updateSigne($order) {
+    public function updateSigne() {
         //Met a jour la commande contenant le signe configure
         $signe = $this->getConfiguration(self::KEY_SIGNE);
 
@@ -337,7 +337,7 @@ class horoscope extends eqLogic {
         log::add('horoscope', 'debug', '┌───────── MISE A JOUR : '.$_eqName );
 
         /*  ********************** Lancement création Signe *************************** */
-        $this->updateSigne($order);
+        //$this->updateSigne();
 
 
         /*     * ********************** Update Horoscope*************************** */
