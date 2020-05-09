@@ -120,7 +120,6 @@ class horoscope extends eqLogic {
                         $theme_strip = strtolower(preg_replace('/[^\wéè]/', '_', $theme));
                         $horoscope['themes'][$theme] = $phrase;
                         $horoscope['themes_simple'][$theme_strip] = $phrase;
-                        log::add('horoscope', 'debug', '│ Mise à jour commande : '.$theme.' : '.$phrase);
                     }
                 }
             }
@@ -221,7 +220,7 @@ class horoscope extends eqLogic {
             if (!is_string($message)) {
                 continue;
             }
-            log::add('horoscope', 'debug', '│ Modification de l\'équipement : '.$this->getName() .$message);
+            log::add('horoscope', 'debug', "│ Modification de la commande : {$this->getName()}->{$theme_name} {$message}");
             // création de la commande si elle n'existe pas encore
             $horoscopeCmd = $this->getCmd(null, $theme_name);
             if (!is_object($horoscopeCmd)) {
