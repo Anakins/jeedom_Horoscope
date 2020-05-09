@@ -184,7 +184,9 @@ class horoscope extends eqLogic {
     }
 
     public function postSave() {
-        log::add('horoscope', 'debug', 'postSave()');
+        $_eqName = $this->getName();
+        log::add('horoscope', 'debug', '>───────── postSave() : '.$_eqName );
+
         $order = 1;
 
         /*  ********************** Lancement création Signe *************************** */
