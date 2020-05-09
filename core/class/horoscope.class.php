@@ -337,11 +337,11 @@ class horoscope extends eqLogic {
         log::add('horoscope', 'debug', '┌───────── MISE A JOUR : '.$_eqName );
 
         /*  ********************** Lancement création Signe *************************** */
-        //$this->updateSigne($order);
+        $this->updateSigne($order);
 
 
         /*     * ********************** Update Horoscope*************************** */
-       // $this->getupdateHoroscope();
+       $this->getupdateHoroscope();
 
         log::add('horoscope', 'debug', '└─────────');
     }
