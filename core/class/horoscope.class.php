@@ -133,7 +133,7 @@ class horoscope extends eqLogic {
      */
 
 
-    public static function cron() {
+    public static function cron($_eqlogic_id = null) {
 	foreach (eqLogic::byType('horoscope', true) as $eqLogic) {
 		$autorefresh = $eqLogic->getConfiguration('autorefresh', '');
         log::add('horoscope', 'debug', '│ Autorefresh : ' . $autorefresh);
