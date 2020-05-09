@@ -136,7 +136,7 @@ class horoscope extends eqLogic {
     public static function cron() {
         foreach (eqLogic::byType('horoscope', true) as $eqLogic) {
             $autorefresh = $eqLogic->getConfiguration('autorefresh', '');
-            log::add('horoscope', 'debug', '│ Autorefresh : ' . $autorefresh);
+
             if ($autorefresh == '')  continue;
             try {
                 $cron = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
@@ -185,7 +185,7 @@ class horoscope extends eqLogic {
 
     public function postSave() {
         $_eqName = $this->getName();
-        log::add('horoscope', 'debug', '>───────── postSave() : '.$_eqName );
+        log::add('horoscope', 'debug', '=> Save : '.$_eqName );
 
         $order = 1;
 
