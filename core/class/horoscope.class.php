@@ -216,6 +216,8 @@ class horoscope extends eqLogic {
 
 
         $signe = $this->getConfiguration(self::KEY_SIGNE);
+        log::add('horoscope', 'debug', '│ Signe : '.$signe);
+
         if (empty($signe)) {
             return;
         }
@@ -326,7 +328,7 @@ class horoscope extends eqLogic {
         $this->getInformations();
     }
 
-    public function getInformations() {
+    public function getInformation() {
         if (!$this->getIsEnable()) return;
 
         if ($this->getConfiguration('autorefresh') == '') {
@@ -370,6 +372,7 @@ class horoscope extends eqLogic {
 
         return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, 'horoscope', 'horoscope')));
     }*/
+
 
     /*     * **********************Getteur Setteur*************************** */
 }
