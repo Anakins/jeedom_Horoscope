@@ -1,5 +1,0 @@
-=== Configuration du plugin
-
-La partie configuration du plugin permet:
---
-* de choisir la frequence d'actualisation de l'horoscope

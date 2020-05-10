@@ -9,21 +9,25 @@ title: Jeedom | Plugin Horoscope Changelog
 Ce Plugin permettant de générer une phrase (selon différents thèmes) tous les jours en fonction des différents signes astrologiques.<br/>Très sympa pour donner l'horoscope le matin à une personne via TTS (par exemple avec la caméra Netatmo qui reconnait les visages) ou par SMS.
 
 
-## Info sur les mises à jour
->*Important : en cas de mise à jour disponible pour laquelle il n’y a pas d’information dans cette section, c’est qu’elle n’intègre aucune nouveauté majeure. Cela peut être un ajout de documentation, une correction de documentation, des traductions ou bien de la correction de bugs mineurs.*
+## Important
+>*Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-# Version 20200508
-- Modification du systéme de Cron  (merci @GMips)
+# Version 20200510
+- Modification du systéme de Cron (merci @Mips), cela se configure ou pas sur chaque équipement
+- Possibilité de rafraichir le widget depuis un scénario
 - Commande Refresh (sur la tuile, scénario etc)
+- Mise à jour des widgets à la norme Core V4
 - Mise à jour des logo (merci @Greg06500)
+- Mise à jour des images pour les widgets (merci @...)
 - Amélioration des logs
+- Liste des équipements avec le logo du signe
 - Correction type de generic
 - Support de PHP 7.3
 - Migration vers font-awesome 5
 - Migration affichage au format core V4
 - La recherche des cmd pour mise à jour ne se fait plus par getConfiguration('data') mais par leur logicalId. Les cmd perdent leur data de configuration.
 - Nettoyage des dossiers
-- Mise à jour de la documentation
+- Mise à jour de la documentation au format mardock
 - Correction Bug : l'actualisation des données ne se fait plus si l'équipement est désactivé
 
 >*Remarque : Il est conseillé de supprimer le plugin et ensuite le réinstaller*

@@ -37,12 +37,12 @@ try {
             $return['cmd'][] = $cmd_info;
         }
         ajax::success($return);
-     }
+    }
 
     if (init('action') == 'autoDEL_eq') {
-		$eqLogic = horoscope::byId(init('id'));
-		if (!is_object($eqLogic)) {
-			throw new Exception(__('Horoscope eqLogic non trouvé : ', __FILE__) . init('id'));
+        $eqLogic = horoscope::byId(init('id'));
+        if (!is_object($eqLogic)) {
+            throw new Exception(__('Horoscope eqLogic non trouvé : ', __FILE__) . init('id'));
         }
         foreach ($eqLogic->getCmd() as $cmd) {
             $cmd->remove();
@@ -50,7 +50,6 @@ try {
         }
         ajax::success();
     }
-
 
     throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
     /*     * *********Catch exeption*************** */

@@ -2,7 +2,7 @@
 
 # Jeedom - Horoscope
 
-Plugin Horoscope pour Jeedom - En développement.
+Plugin Horoscope pour Jeedom
 
 Ce plugin a pour but de pouvoir donner l'horoscope chaque jour via une petite phrase.
 

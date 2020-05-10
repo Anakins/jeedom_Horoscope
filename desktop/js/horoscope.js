@@ -32,9 +32,8 @@ $('.eqLogicAttr[data-l1key=configuration][data-l2key=signe]').on('change', funct
         $('#img_device').attr("src", 'plugins/horoscope/plugin_info/horoscope_icon.png');
     }
 });
-/*
- * Fonction pour l'ajout de commande, appellé automatiquement par plugin.template
- */
+
+/* Fonction pour l'ajout de commande, appellé automatiquement par plugin.template */
 function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
         console.log("add cmd:" + init(_cmd.id)) // ajouté pour debug

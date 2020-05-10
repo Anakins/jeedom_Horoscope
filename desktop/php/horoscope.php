@@ -21,7 +21,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
                 <span>{{Configuration}}</span>
             </div>
         </div>
-        <legend><i class="fas fa-address-card"></i> {{Mes Horoscopes}}</legend>
+        <legend><i class="fas fa-address-card"></i> {{Mes 300 Horoscopes}}</legend>
         <input class="form-control" placeholder="{{Rechercher}}" id="in_searchEqlogic" />
         <div class="eqLogicThumbnailContainer">
             <?php
@@ -113,17 +113,31 @@ $eqLogics = eqLogic::byType($plugin->getId());
                 <form class="form-horizontal col-sm-10">
                     <fieldset>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{Signe}}</label>
+                            <label class="col-sm-2 control-label">{{Signe du zodiaque}}
+                                <sup><i class="fas fa-question-circle" title="{{Choisir son signe}}"></i></sup>
+                            </label>
                             <div class="col-sm-3">
-                                <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="signe">
-                                    <?php foreach (horoscope::getSignes() as $key => $name) : ?>
-                                    <option value="<?= $key ?>"><?= __($name, __FILE__) ?></option>
-                                    <?php endforeach; ?>
+                                <select id="type_calcul" class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="signe">
+                                    <option value=''>{{Aucun}}</option>
+                                    <option value='balance'>{{Balance}}</option>
+                                    <option value='belier'>{{Bélier}}</option>
+                                    <option value='cancer'>{{Cancer}}</option>
+                                    <option value='capricorne'>{{Capricorne}}</option>
+                                    <option value='gemeaux'>{{Gémeaux}}</option>
+                                    <option value='lion'>{{Lion}}</option>
+                                    <option value='poissons'>{{Poissons}}</option>
+                                    <option value='sagittaire'>{{Sagittaire}}</option>
+                                    <option value='scorpion'>{{Scorpion}}</option>
+                                    <option value='taureau'>{{Taureau}}</option>
+                                    <option value='vierge'>{{Vierge}}</option>
+                                    <option value='verseau'>{{Verseau}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{Auto-actualisation (cron)}}</label>
+                            <label class="col-sm-2 control-label">{{Auto-actualisation}}
+                                <sup><i class="fas fa-question-circle" title="{{Cron }}"></i></sup>
+                            </label>
                             <div class="col-sm-3">
                                 <div class="input-group">
                                     <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="autorefresh" placeholder="{{Auto-actualisation (cron)}}" />
