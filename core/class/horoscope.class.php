@@ -168,6 +168,14 @@ class horoscope extends eqLogic {
 
     }
 
+    public function getImage() {
+        if($this->getConfiguration('signe') != ''){
+            $filename = 'plugins/horoscope/core/config/img/' . $this->getConfiguration('signe').'.png';
+            if(file_exists(__DIR__.'/../../../../'.$filename)){
+                return $filename;
+            }
+        }
+
     public function postSave() {
         $_eqName = $this->getName();
         log::add('horoscope', 'debug', '=> Save : '.$_eqName );
