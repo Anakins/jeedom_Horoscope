@@ -161,7 +161,6 @@ class horoscope extends eqLogic {
             throw new Exception(__('Le champ "Signe du zodiaque" ne peut être vide',__FILE__));
             log::add('horoscope', 'error', '│ Configuration : Signe zodiaque inexistant : ' . $this->getConfiguration('signe'));
         }
-        log::add('horoscope', 'debug', '│ Signe du zodiaque : ' . $signe_zodiaque);
     }
 
     public function postInsert() {
