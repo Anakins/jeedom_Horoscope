@@ -6,16 +6,20 @@ title: Jeedom | Plugin Horoscope
 
 # Description
 
-Ce Plugin permet de récupérer son horoscope tous les jours.
+Ce plugin permet de récupérer son horoscope tous les jours de façon automatique ou manuelle.
 
-Plusieurs phrases sont disponibles chaque jours en fonction de thèmes comme Amour,Argent,Famille,Santé,...
+Plusieurs phrases sont disponibles chaque jours en fonction de thèmes comme Amour, Argent, Famille, Santé, ...
 Une phrase symbolique est également disponible.
 
-Ceci peut-être très pratique afin de donner l'horoscope du jour à une personne (via une caméra Netatmo par exemple) ou par TTS tous les jours.
+Ceci peut être très pratique afin de donner l'horoscope du jour à une personne (via une caméra Netatmo par exemple) ou par TTS tous les jours.
 
 # Configuration
 
-Le plugin ne comporte pas de configuration particuliere
+Le plugin ne comporte pas de configuration particulière.
+
+Il est possible de configurer un cron pour activer le relever automatique.
+![exemple commandes](../images/faq_cron.png)
+> Il est conseillé de configurer l'Auto-actualisation à 5h du matin tous les jours.
 
 # FAQ
 
@@ -23,7 +27,7 @@ Le plugin ne comporte pas de configuration particuliere
 
 >Le plugin n'utilise que du PHP  pour aller chercher les informations (après découpage) sur un site d'astrologie.
 
--   Pourquoi est-il conseillé de régler le cron d'actualisation à 5H du matin ? ?
+-   Pourquoi est-il conseillé de régler le cron d'actualisation à 5H du matin ?
 
 >Ne connaissant pas exactement l'heure d'actualisation du site internet, il est préférable de le faire tôt dans la matinée.
 >
@@ -35,7 +39,24 @@ Le plugin ne comporte pas de configuration particuliere
 ## Exemple de configuration
 
 ![exemple équipement](../images/equipement.png)
+
 ![exemple commandes](../images/commandes.png)
 
+# Troubleshotting
 
+- Je n'ai aucune commandes de créer à part de "signe"
 
+>Les commandes sont créées automatiquement après la première actualisation de l'équipement.
+>
+
+- Je n'ai pas d'actualisation automatique
+
+>Il faut vérifier la présence d'une valeur dans l'option "Auto-actualisation" *(flèche rouge)*
+![exemple commandes](../images/faq_cron.png)
+>On peut régler le temps avec le bouton **?** *(flèche verte)
+*
+
+- L'icône sur la liste des équipements ne correspond pas au  "signe"
+
+>Il faut vérifier que la présence d'une valeur dans l'option "Signe du zodiaque"
+>
