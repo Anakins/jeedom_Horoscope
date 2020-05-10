@@ -175,6 +175,8 @@ class horoscope extends eqLogic {
                 return $filename;
             }
         }
+        return 'plugins/horoscope/plugin_info/horoscope_icon.png';
+    }
 
     public function postSave() {
         $_eqName = $this->getName();
