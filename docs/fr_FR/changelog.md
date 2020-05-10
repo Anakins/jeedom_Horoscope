@@ -17,7 +17,7 @@ Ce Plugin permettant de générer une phrase (selon différents thèmes) tous le
 - Possibilité de rafraichir le widget depuis un scénario
 - Commande Refresh (sur la tuile, scénario etc)
 - Mise à jour des widgets à la norme Core V4
-- Mise à jour des logo (merci @Greg06500)
+- Mise à jour logo plugin avec la nouvelle norme Jeedom (merci @Greg06500)
 - Mise à jour des images pour les widgets (merci @...)
 - Amélioration des logs
 - Liste des équipements avec le logo du signe
