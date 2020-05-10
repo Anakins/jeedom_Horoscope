@@ -21,7 +21,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
                 <span>{{Configuration}}</span>
             </div>
         </div>
-        <legend><i class="fas fa-address-card"></i> {{Mes 300 Horoscopes}}</legend>
+        <legend><i class="fas fa-address-card"></i> {{Mes Horoscopes}}</legend>
         <input class="form-control" placeholder="{{Rechercher}}" id="in_searchEqlogic" />
         <div class="eqLogicThumbnailContainer">
             <?php
