@@ -199,6 +199,9 @@ class horoscope extends eqLogic {
             $refresh->setSubType('other');
             $refresh->save();
         }
+
+        //Mise à jour de l'équipement
+        $this->getInformations();
     }
 
 

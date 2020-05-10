@@ -6,19 +6,18 @@ title: Jeedom | Plugin Horoscope Changelog
 
 # Info
 ## Description
-Ce Plugin permettant de générer une phrase (selon différents thèmes) tous les jours en fonction des différents signes astrologiques.<br/>Très sympa pour donner l'horoscope le matin à une personne via TTS (par exemple avec la caméra Netatmo qui reconnait les visages) ou par SMS.
-
+Ce Plugin permet de générer une phrase (selon différents thèmes) tous les jours en fonction des différents signes astrologiques.<br/>Très sympa pour donner l'horoscope le matin à une personne via TTS (par exemple avec la caméra Netatmo qui reconnait les visages) ou par SMS.
 
 ## Important
->*Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
+>***Pour rappel*** s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
 # Version 20200510
-- Modification du systéme de Cron (merci @Mips), cela se configure ou pas sur chaque équipement
-- Possibilité de rafraichir le widget depuis un scénario
-- Commande Refresh (sur la tuile, scénario etc)
-- Mise à jour des widgets à la norme Core V4
+- Modification du système de Cron (merci @Mips), il se configure ou pas sur chaque équipement.
+- Possibilité de rafraichir le widget depuis un scénario.
+- Commande Refresh (sur la tuile, scénario etc).
+- Mise à jour des widgets à la norme Core V4. (Pas de Widget disponible pour le Core V3)
 - Mise à jour logo plugin avec la nouvelle norme Jeedom (merci @Greg06500)
-- Mise à jour des images pour les widgets (merci @...)
+- Mise à jour des images pour les widgets (merci @Dankoss001)
 - Amélioration des logs
 - Liste des équipements avec le logo du signe
 - Correction type de generic
@@ -36,23 +35,21 @@ Ce Plugin permettant de générer une phrase (selon différents thèmes) tous le
 - Mise à jour info.json (pour jeedom 3)
 
 # Version 1.05 - 19/12/2016
-- Seuil d’alerte du point de rosée configurable dans Informations. Valeur par défaut 2°C
+- Mise à jour du widget
 
 # Version 1.04 - 18/12/2016
 - Mise à jour du widget
-
 
 # Version 1.03 - 18/12/2016
 - Suppression de la classe bootstrap
 
 # Version 1.02 - 18/12/2016
-- Actualisation de l'horoscope apres la creation de l'equipement
+- Actualisation de l'horoscope après la création de l'équipement
 
 # Version 1.0 - 18/12/2016
 
 - Supporte les 12 signes du zodiaque.
-- Premiere publication du plugin
+- Première publication du plugin
 
 # Version 1.0 - 26/09/2016
-
-- Version intiales du plugin
+- Version initiales du plugin
