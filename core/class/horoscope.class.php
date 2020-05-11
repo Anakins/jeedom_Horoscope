@@ -123,7 +123,7 @@ class horoscope extends eqLogic {
 
     // Template pour la tendance
     function templateWidget() {
-    $return = array('info' => array('numeric' => array()));
+    $return = array('info' => array('string' => array()));
     $return['info']['string']['Signe zodiaque'] = array(
         'template' => 'tmplmultistateline',
         'test' => array(
