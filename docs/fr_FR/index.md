@@ -1,7 +1,8 @@
 ---
 layout: default
+title: Plugin horoscope - Documentation
 lang: fr_FR
-title: Jeedom | Plugin Horoscope
+pluginId: horoscope
 ---
 
 # Description

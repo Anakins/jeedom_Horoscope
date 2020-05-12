@@ -93,7 +93,6 @@ class horoscope extends eqLogic {
     // Template pour la tendance
     function templateWidget() {
         $return = array('info' => array('string' => array()));
-        $return = array('replace' => array('#_desktop_width_#' => array('200')));
         $return['info']['string']['Signe zodiaque'] = array(
             'template' => 'tmplmultistate',
             'replace' => array('#_desktop_width_#' => '60'),
@@ -148,7 +147,7 @@ class horoscope extends eqLogic {
 
     public function postSave() {
         $_eqName = $this->getName();
-        log::add('horoscope', 'debug', '=> Save : '.$_eqName );
+        log::add('horoscope', 'debug', 'postSave() =>'.$_eqName);
 
         $signe_zodiaque=$this->getConfiguration('signe');
 
