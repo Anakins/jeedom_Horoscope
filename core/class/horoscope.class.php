@@ -125,7 +125,7 @@ class horoscope extends eqLogic {
     function templateWidget() {
         $return = array('info' => array('string' => array()));
         $return = array('replace' => array('#_desktop_width_#' => array('200')));
-        $return['info']['string']['Signezodiaque'] = array(
+        $return['info']['string']['Signe zodiaque'] = array(
             'template' => 'tmplmultistate',
             'replace' => array('#_desktop_width_#' => '60'),
             'test' => array(
@@ -136,11 +136,11 @@ class horoscope extends eqLogic {
                 array('operation' => "#value# == 'gemeaux'", 'state_light' => '<img src=plugins/horoscope/core/template/img/gemeaux_light.png>', 'state_dark' => '<img src=plugins/horoscope/core/template/img/gemeaux_dark.png>'),
                 array('operation' => "#value# == 'lion'", 'state_light' => '<img src=plugins/horoscope/core/template/img/lion_light.png>', 'state_dark' => '<img src=plugins/horoscope/core/template/img/lion_dark.png>'),
                 array('operation' => "#value# == 'poissons'", 'state_light' => '<img src=plugins/horoscope/core/template/img/poissons_light.png>', 'state_dark' => '<img src=plugins/horoscope/core/template/img/poissons_dark.png>'),
-                array('operation' => "#value# == 'sagitaire'", 'state_light' => '<img src=plugins/horoscope/core/template/img/sagitaire_light.png>', 'state_dark' => '<img src=plugins/horoscope/core/template/img/sagitaire_dark.png>'),
+                array('operation' => "#value# == 'sagittaire'", 'state_light' => '<img src=plugins/horoscope/core/template/img/sagittaire_light.png>', 'state_dark' => '<img src=plugins/horoscope/core/template/img/sagittaire_dark.png>'),
                 array('operation' => "#value# == 'scorpion'", 'state_light' => '<img src=plugins/horoscope/core/template/img/scorpion_light.png>', 'state_dark' => '<img src=plugins/horoscope/core/template/img/scorpion_dark.png>'),
                 array('operation' => "#value# == 'taureau'", 'state_light' => '<img src=plugins/horoscope/core/template/img/taureau_light.png>', 'state_dark' => '<img src=plugins/horoscope/core/template/img/taureau_dark.png>'),
                 array('operation' => "#value# == 'vierge'", 'state_light' => '<img src=plugins/horoscope/core/template/img/vierge_light.png>', 'state_dark' => '<img src=plugins/horoscope/core/template/img/vierge_dark.png>'),
-                array('operation' => "#value# == 'verseau'", 'state_light' => '<img src=plugins/horoscope/core/template/img/vereseau_light.png>', 'state_dark' => '<img src=plugins/horoscope/core/template/img/vereseau_dark.png>')
+                array('operation' => "#value# == 'verseau'", 'state_light' => '<img src=plugins/horoscope/core/template/img/verseau_light.png>', 'state_dark' => '<img src=plugins/horoscope/core/template/img/verseau_dark.png>')
             )
         );
         return $return;
@@ -183,7 +183,7 @@ class horoscope extends eqLogic {
         $_eqName = $this->getName();
         log::add('horoscope', 'debug', '=> Save : '.$_eqName );
 
-        $signe_zodiaque=$this->getConfiguration('signe_zodiaque');
+        $signe_zodiaque=$this->getConfiguration('signe');
 
         $this->updateSigne($signe_zodiaque);
 
@@ -275,18 +275,22 @@ class horoscope extends eqLogic {
             $horoscopeCmd->setSubType('string');
             $horoscopeCmd->setIsHistorized(0);
             $horoscopeCmd->setIsVisible(1);
-            $horoscopeCmd->setTemplate('dashboard','horoscope::Signezodiaque');
-            $horoscopeCmd->setTemplate('mobile','horoscope::Signezodiaque');
+            $horoscopeCmd->setTemplate('dashboard','horoscope::Signe zodiaque');
+            $horoscopeCmd->setTemplate('mobile','horoscope::Signe zodiaque');
             $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
             $horoscopeCmd->save();
 
             log::add('horoscope', 'debug', '│ Création de la commande Signe');
         }
-        log::add('horoscope', 'debug', '│ Rappel Signe : '.$signe_zodiaque);
+
+        $cmd = $this->getCmd('info', 'signe');//Mise à jour de la valeur
+        if(is_object($cmd)) {
+            $cmd->setConfiguration('value', $signe_zodiaque);
+            $cmd->save();
+            $cmd->event($signe_zodiaque);
+        }
         $this->checkAndUpdateCmd('signe', $signe_zodiaque);
     }
-
-
 
     /*     * **********************Getteur Setteur*************************** */
     public function postUpdate() {

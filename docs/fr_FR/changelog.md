@@ -11,7 +11,7 @@ Ce Plugin permet de générer une phrase (selon différents thèmes) tous les jo
 ## Important
 >***Pour rappel*** s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-# Version 20200510
+# Version 20200512
 - Modification du système de Cron (merci @Mips), il se configure ou pas sur chaque équipement.
 - Possibilité de rafraichir le widget depuis un scénario.
 - Commande Refresh (sur la tuile, scénario etc).
