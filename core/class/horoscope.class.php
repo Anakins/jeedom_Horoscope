@@ -29,7 +29,6 @@ class horoscope extends eqLogic {
 
     public static $_url_template = 'http://www.asiaflash.com/horoscope/rss_horojour_%s.xml';
 
-
     /*     * *************************Attributs****************************** */
 
     /*     * ***********************Methode static*************************** */
@@ -116,8 +115,6 @@ class horoscope extends eqLogic {
         return $return;
     }
 
-
-
     /*     * *********************Méthodes d'instance************************* */
     public function preSave() {
 
@@ -172,7 +169,6 @@ class horoscope extends eqLogic {
         }
 
     }
-
 
     /* Recuperer l'horoscope du jour et met à jour les commandes */
     public function getupdateHoroscope($signe_zodiaque) {
