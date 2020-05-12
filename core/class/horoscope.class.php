@@ -21,28 +21,6 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
 class horoscope extends eqLogic {
 
-    /* Le nom du parametre contenant le signe configuré */
-    //const KEY_SIGNE = 'signe';
-
-    /* Liste des signes disponible - Il ne s'agit là que des clés de configuration, le nom affiché des signes est configuré dans les translation
-
-    protected static $_signes = [
-        'balance' => 'Balance',
-        'belier' => 'Bélier',
-        'cancer' => 'Cancer',
-        'capricorne' => 'Capricorne',
-        'gemeaux' => 'Gémeaux',
-        'lion' => 'Lion',
-        'poissons' => 'Poissons',
-        'sagittaire' => 'Sagittaire',
-        'scorpion' => 'Scorpion',
-        'taureau' => 'Taureau',
-        'vierge' => 'Vierge',
-        'verseau' => 'Verseau'
-    ];*/
-
-    /* Mapping des themes en commandes : Permet de lier le nom d'un theme à une commande Jeedom avec un nom specifique */
-
     protected static $_theme_mapping = [
         //clin_d_oeil' => 'horoscopeDuJour'
     ];
@@ -55,14 +33,6 @@ class horoscope extends eqLogic {
     /*     * *************************Attributs****************************** */
 
     /*     * ***********************Methode static*************************** */
-
-    /* Recupere la liste des signes disponibles */
-
-    /* public static function getSignes() {
-        return self::$_signes;
-    } */
-
-    /* Recupere l'horoscope du signe donnée depuis l'URL et retourne les valeurs de l'horoscope - @param */
 
     public static function getHoroscopeForSigne($signe_zodiaque) {
 
