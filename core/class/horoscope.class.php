@@ -125,7 +125,7 @@ class horoscope extends eqLogic {
     function templateWidget() {
         $return = array('info' => array('string' => array()));
         $return = array('replace' => array('#_desktop_width_#' => array('200')));
-        $return['info']['string']['Signe zodiaque'] = array(
+        $return['info']['string']['Signezodiaque'] = array(
             'template' => 'tmplmultistate',
             'replace' => array('#_desktop_width_#' => '60'),
             'test' => array(
@@ -275,8 +275,8 @@ class horoscope extends eqLogic {
             $horoscopeCmd->setSubType('string');
             $horoscopeCmd->setIsHistorized(0);
             $horoscopeCmd->setIsVisible(1);
-            $horoscopeCmd->setTemplate('dashboard','horoscope::Signe zodiaque');
-            $horoscopeCmd->setTemplate('mobile','horoscope::Signe zodiaque');
+            $horoscopeCmd->setTemplate('dashboard','horoscope::Signezodiaque');
+            $horoscopeCmd->setTemplate('mobile','horoscope::Signezodiaque');
             $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
             $horoscopeCmd->save();
 
