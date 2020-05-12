@@ -65,7 +65,9 @@ function horoscope_update() {
 
 
     //message::add('Plugin Horoscope', 'Merci pour la mise à jour de ce plugin, consultez le changelog.');
-
+    foreach (eqLogic::byType('horoscope') as $horoscope) {
+        $horoscope->getInformations();
+    }
 }
 
 function updateLogicalId($eqLogic, $from, $to) {
