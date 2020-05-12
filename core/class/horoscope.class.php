@@ -282,6 +282,7 @@ class horoscope extends eqLogic {
 
             log::add('horoscope', 'debug', '│ Création de la commande Signe');
         }
+        log::add('horoscope', 'debug', '│ Rappel Signe : '.$signe_zodiaque);
         $this->checkAndUpdateCmd('signe', $signe_zodiaque);
     }
 
