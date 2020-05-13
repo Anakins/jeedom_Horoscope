@@ -116,7 +116,9 @@ class horoscope extends eqLogic {
 
     /*     * *********************Méthodes d'instance************************* */
     public function preSave() {
-
+        if ($this->getConfiguration('autorefresh') == '') {
+            $this->setConfiguration('autorefresh', '0 5 * * *');
+        }
     }
 
     public function preUpdate() {

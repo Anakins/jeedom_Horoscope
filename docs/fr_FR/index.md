@@ -20,7 +20,7 @@ Le plugin ne comporte pas de configuration particulière.
 
 Il est possible de configurer un cron pour activer le relever automatique.
 ![exemple commandes](../images/faq_cron.png)
-> Il est conseillé de configurer l'Auto-actualisation à 5h du matin tous les jours.
+> Le plugin configure l'Auto-actualisation à 5h du matin tous les jours par défaut pour les nouveaux équipements.
 
 Un widget est appliqué automatiquement sur la commande **signe**
 
