@@ -29,6 +29,7 @@ Ce Plugin permet de générer une phrase (selon différents thèmes) tous les jo
 - Nettoyage des dossiers
 - Mise à jour de la documentation au format mardock
 - Correction Bug : l'actualisation des données ne se fait plus si l'équipement est désactivé
+- Correction erreur MySql lors de la création d'un équipement
 
 >*Remarque : Il est conseillé de supprimer le plugin et ensuite le réinstaller*
 
