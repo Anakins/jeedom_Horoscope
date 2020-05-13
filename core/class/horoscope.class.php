@@ -115,21 +115,10 @@ class horoscope extends eqLogic {
     }
 
     /*     * *********************Méthodes d'instance************************* */
-    public function preSave() {
+
+    public function preInsert() {
         if ($this->getConfiguration('autorefresh') == '') {
             $this->setConfiguration('autorefresh', '0 5 * * *');
-        }
-    }
-
-    public function preUpdate() {
-        if (!$this->getIsEnable()) return;
-
-        /*  ********************** Récupération signe *************************** */
-        $signe_zodiaque=$this->getConfiguration('signe');
-
-        if ($signe_zodiaque== '') {
-            throw new Exception(__('Le champ "Signe du zodiaque" ne peut être vide',__FILE__));
-            log::add('horoscope', 'error', '│ Configuration : Signe zodiaque inexistant : ' . $this->getConfiguration('signe'));
         }
     }
 
@@ -137,14 +126,8 @@ class horoscope extends eqLogic {
 
     }
 
-    public function getImage() {
-        if($this->getConfiguration('signe') != ''){
-            $filename = 'plugins/horoscope/core/config/img/' . $this->getConfiguration('signe').'.png';
-            if(file_exists(__DIR__.'/../../../../'.$filename)){
-                return $filename;
-            }
-        }
-        return 'plugins/horoscope/plugin_info/horoscope_icon.png';
+    public function preSave() {
+
     }
 
     public function postSave() {
@@ -169,6 +152,40 @@ class horoscope extends eqLogic {
             $refresh->save();
         }
 
+    }
+
+    public function preUpdate() {
+        if (!$this->getIsEnable()) return;
+
+        /*  ********************** Récupération signe *************************** */
+        $signe_zodiaque=$this->getConfiguration('signe');
+
+        if ($signe_zodiaque== '') {
+            throw new Exception(__('Le champ "Signe du zodiaque" ne peut être vide',__FILE__));
+            log::add('horoscope', 'error', '│ Configuration : Signe zodiaque inexistant : ' . $this->getConfiguration('signe'));
+        }
+    }
+
+    public function postUpdate() {
+        $this->getInformations();
+    }
+
+    public function preRemove() {
+
+    }
+
+    public function postRemove() {
+
+    }
+
+    public function getImage() {
+        if($this->getConfiguration('signe') != ''){
+            $filename = 'plugins/horoscope/core/config/img/' . $this->getConfiguration('signe').'.png';
+            if(file_exists(__DIR__.'/../../../../'.$filename)){
+                return $filename;
+            }
+        }
+        return 'plugins/horoscope/plugin_info/horoscope_icon.png';
     }
 
     /* Recuperer l'horoscope du jour et met à jour les commandes */
@@ -260,9 +277,7 @@ class horoscope extends eqLogic {
     }
 
     /*     * **********************Getteur Setteur*************************** */
-    public function postUpdate() {
-        $this->getInformations();
-    }
+
 
     public function getInformations() {
         if (!$this->getIsEnable()) return;
