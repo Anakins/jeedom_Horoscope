@@ -254,6 +254,7 @@ class horoscope extends eqLogic {
     }
 
     public function getupdateSigne($signe_zodiaque, $order) {
+        $_eqName = $this->getName();
 
         $horoscopeCmd = $this->getCmd(null, 'signe');
         if (!is_object($horoscopeCmd)) {
@@ -273,7 +274,9 @@ class horoscope extends eqLogic {
             $order ++;
             $horoscopeCmd->save();
 
-            log::add('horoscope', 'debug', '│ Création de la commande Signe');
+            log::add('horoscope', 'debug', '┌───────── Création commande : '.$_eqName );
+            log::add('horoscope', 'debug', '│ Nouvelle commande : Signe');
+            log::add('horoscope', 'debug', '└─────────');
         }
 
         $cmd = $this->getCmd('info', 'signe');//Mise à jour de la valeur
