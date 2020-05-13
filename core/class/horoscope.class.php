@@ -133,10 +133,11 @@ class horoscope extends eqLogic {
     public function postSave() {
         $_eqName = $this->getName();
         log::add('horoscope', 'debug', 'postSave() =>'.$_eqName);
+        $order = 1;
 
         $signe_zodiaque=$this->getConfiguration('signe');
 
-        $this->updateSigne($signe_zodiaque);
+        $this->getupdateSigne($signe_zodiaque,$order);
 
         //Fonction rafraichir
         $refresh = $this->getCmd(null, 'refresh');
@@ -149,6 +150,7 @@ class horoscope extends eqLogic {
             $refresh->setEqLogic_id($this->getId());
             $refresh->setType('action');
             $refresh->setSubType('other');
+            $refresh->setOrder($order);
             $refresh->save();
         }
 
@@ -189,7 +191,7 @@ class horoscope extends eqLogic {
     }
 
     /* Recuperer l'horoscope du jour et met à jour les commandes */
-    public function getupdateHoroscope($signe_zodiaque) {
+    public function getupdateHoroscope($signe_zodiaque,$order) {
 
         $horoscope = self::getHoroscopeForSigne($signe_zodiaque);
 
@@ -212,6 +214,8 @@ class horoscope extends eqLogic {
                 $horoscopeCmd->setIsHistorized(0);
                 $horoscopeCmd->setIsVisible(0);
                 $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
+                $horoscopeCmd->setOrder($order);
+                $order ++;
                 $horoscopeCmd->save();
 
                 log::add('horoscope', 'debug', '│ Création de la commande : '.$theme_name);
@@ -237,6 +241,8 @@ class horoscope extends eqLogic {
                     $horoscopeCmd->setIsHistorized(0);
                     $horoscopeCmd->setIsVisible(0);
                     $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
+                    $horoscopeCmd->setOrder($order);
+                    $order ++;
                     $horoscopeCmd->save();
 
                     log::add('horoscope', 'debug', '│ Création de la commande : '.$theme_name);
@@ -244,9 +250,10 @@ class horoscope extends eqLogic {
                 $this->checkAndUpdateCmd($specific_commande_name, $message);
             }
         }
+        return $order;
     }
 
-    public function updateSigne($signe_zodiaque) {
+    public function getupdateSigne($signe_zodiaque, $order) {
 
         $horoscopeCmd = $this->getCmd(null, 'signe');
         if (!is_object($horoscopeCmd)) {
@@ -262,6 +269,8 @@ class horoscope extends eqLogic {
             $horoscopeCmd->setTemplate('dashboard','horoscope::Signe zodiaque');
             $horoscopeCmd->setTemplate('mobile','horoscope::Signe zodiaque');
             $horoscopeCmd->setDisplay('generic_type','GENERIC_INFO');
+            $horoscopeCmd->setOrder($order);
+            $order ++;
             $horoscopeCmd->save();
 
             log::add('horoscope', 'debug', '│ Création de la commande Signe');
@@ -274,6 +283,7 @@ class horoscope extends eqLogic {
             $cmd->event($signe_zodiaque);
         }
         $this->checkAndUpdateCmd('signe', $signe_zodiaque);
+        return $order;
     }
 
     /*     * **********************Getteur Setteur*************************** */
@@ -284,6 +294,7 @@ class horoscope extends eqLogic {
 
         $_eqName = $this->getName();
         log::add('horoscope', 'debug', '┌───────── MISE A JOUR : '.$_eqName );
+        $order = 1;
 
         /*  ********************** Récupération signe *************************** */
         $signe_zodiaque=$this->getConfiguration('signe');
@@ -294,10 +305,11 @@ class horoscope extends eqLogic {
         log::add('horoscope', 'debug', '│ Signe du zodiaque : ' . $signe_zodiaque);
 
         /* Création/Update Signe */
-        $this->updateSigne($signe_zodiaque);
+        $this->getupdateSigne($signe_zodiaque, $order);
+        $order = 2;
 
         /* Création/Update Horoscope */
-        $this->getupdateHoroscope($signe_zodiaque);
+        $this->getupdateHoroscope($signe_zodiaque,$order);
 
         log::add('horoscope', 'debug', '└─────────');
     }
