@@ -11,4 +11,3 @@ Il suffit de créer une personne (un équipement) et de lui affecter un signe du
 La phrase sera ensuite générée via le biais d'un site internet sur l'astrologie.
 
 Ceci est mon premier plugin :-)
-

@@ -27,7 +27,4 @@ if (!isConnect()) {
     $(function() {
         $('#div_confPlugin > .panel.panel-primary').hide()
     })
-
-    
-
 </script>

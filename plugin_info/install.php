@@ -39,7 +39,7 @@ function horoscope_update() {
     }
 
     config::save('functionality::cron::enable', 1, 'horoscope');
-
+    
     // Fonction pour renommer les commandes à activer si besoin
     /*$plugin = plugin::byId('horoscope');
     $eqLogics = eqLogic::byType($plugin->getId());
@@ -85,5 +85,3 @@ function horoscope_remove() {
         $cron->remove();
     }
 }
-
-?>

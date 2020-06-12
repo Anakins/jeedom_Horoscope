@@ -26,8 +26,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
         <div class="eqLogicThumbnailContainer">
             <?php
             foreach ($eqLogics as $eqLogic) {
-				$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
-                echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '" >';
+                $opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
+                echo '<div class="eqLogicDisplayCard cursor ' . $opacity . '" data-eqLogic_id="' . $eqLogic->getId() . '" >';
                 if ($eqLogic->getConfiguration('signe') != '') {
                     echo '<img src="' . $eqLogic->getImage() . '"/>';
                 } else {
@@ -179,6 +179,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
 </div>
 
 <?php
-	include_file('desktop', 'horoscope', 'js', 'horoscope');
-	include_file('core', 'plugin.template', 'js');
+include_file('desktop', 'horoscope', 'js', 'horoscope');
+include_file('core', 'plugin.template', 'js');
 ?>
