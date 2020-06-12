@@ -24,7 +24,6 @@ $("#table_cmd").sortable({
     forcePlaceholderSize: true
 });
 
-
 $('.eqLogicAttr[data-l1key=configuration][data-l2key=signe]').on('change', function () {
     if ($(this).value() != '') {
         $('#img_device').attr("src", 'plugins/horoscope/core/config/img/' + $(this).value() + '.png');
@@ -70,5 +69,9 @@ function addCmdToTable(_cmd) {
     tr += '</tr>';
     $('#table_cmd tbody').append(tr);
     $('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
+    if (isset(_cmd.type)) {
+        $('#table_cmd tbody tr:last .cmdAttr[data-l1key=type]').value(init(_cmd.type));
+    }
+    jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
 
 }
