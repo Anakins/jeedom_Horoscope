@@ -22,54 +22,9 @@ if (!isConnect()) {
     die();
 }
 ?>
-<form class="form-horizontal">
-    <fieldset>
-	
-	<span>
-        <div class="form-group"> <br>
-           <a href="https://github.com/Anakins/jeedom_horoscope" target="_blank"><font size="+1"><center>Cliquer pour voir la documentation du plugin</center></font></a>
-       </div>
-	</span>
-        <div class="form-group"> <br>
 
-          <label class="col-lg-4 control-label">{{Fréquence de recuperation des données}}</label>
-          <div class="col-lg-2">
-              <select id="frequence" class="configKey form-control"  data-l1key="frequence" >
-              
-              
-              <option value="5h">{{à 5H00 du matin (conseillé)}}</option>
-			  <option value="1h">{{Toutes les 1 heure}}</option>
-			  <option value="minuit">{{à minuit}}</option>
-			  <option value="1min">{{Toutes les 1 minute (pour les tests)}}</option>
-               </select>
-          </div>
-        </div>
-	
-	<?php
-	/*
-        <div class="form-group">
-            <label class="col-lg-4 control-label">{{Global param 1}}</label>
-            <div class="col-lg-2">
-                <input class="configKey form-control" data-l1key="param1" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-4 control-label">{{Global param 2}}</label>
-            <div class="col-lg-2">
-                <input class="configKey form-control" data-l1key="param2" value="80" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-4 control-label">{{Global param 2}}</label>
-            <div class="col-lg-2">
-                <select class="configKey form-control" data-l1key="param3">
-                    <option value="value1">value1</option>
-                    <option value="value2">value2</option>
-                </select>
-            </div>
-        </div>
-		*/
-		?>
-  </fieldset>
-</form>
-
+<script>
+    $(function() {
+        $('#div_confPlugin > .panel.panel-primary').hide()
+    })
+</script>
