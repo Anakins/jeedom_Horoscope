@@ -145,17 +145,24 @@ class horoscope extends eqLogic
         $this->getupdateSigne($signe_zodiaque, $order);
 
         //Fonction rafraichir
+        $createRefreshCmd = true;
         $refresh = $this->getCmd(null, 'refresh');
         if (!is_object($refresh)) {
-            $refresh = new horoscopeCmd();
-            $refresh->setLogicalId('refresh');
-            $refresh->setIsVisible(1);
-            $refresh->setName(__('Rafraichir', __FILE__));
-            $refresh->setOrder($order);
-            $refresh->setEqLogic_id($this->getId());
+            $refresh = cmd::byEqLogicIdCmdName($this->getId(), __('Rafraichir', __FILE__));
+            if (is_object($refresh)) {
+                $createRefreshCmd = false;
+            }
+        }
+        if ($createRefreshCmd) {
+            if (!is_object($refresh)) {
+                $refresh = new horoscopeCmd();
+                $refresh->setLogicalId('refresh');
+                $refresh->setIsVisible(1);
+                $refresh->setName(__('Rafraichir', __FILE__));
+            }
             $refresh->setType('action');
             $refresh->setSubType('other');
-            $refresh->setOrder($order);
+            $refresh->setEqLogic_id($this->getId());
             $refresh->save();
         }
     }
