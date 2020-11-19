@@ -32,6 +32,11 @@ $('.eqLogicAttr[data-l1key=configuration][data-l2key=signe]').on('change', funct
     }
 });
 
+$('#bt_resetSearch').off('click').on('click', function () {
+	$('#in_searchEqlogic').val('')
+	$('#in_searchEqlogic').keyup();
+})
+
 /* Fonction pour l'ajout de commande, appellé automatiquement par plugin.template */
 function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
