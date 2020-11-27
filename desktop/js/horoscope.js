@@ -14,15 +14,10 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-$("#table_cmd").sortable({
-    axis: "y",
-    cursor: "move",
-    items: ".cmd",
-    placeholder: "ui-state-highlight",
-    tolerance: "intersect",
-    forcePlaceholderSize: true
-});
+/*
+* Permet la réorganisation des commandes dans l'équipement
+*/
+$("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
 $('.eqLogicAttr[data-l1key=configuration][data-l2key=signe]').on('change', function () {
     if ($(this).value() != '') {
@@ -32,12 +27,9 @@ $('.eqLogicAttr[data-l1key=configuration][data-l2key=signe]').on('change', funct
     }
 });
 
-$('#bt_resetSearch').off('click').on('click', function () {
-	$('#in_searchEqlogic').val('')
-	$('#in_searchEqlogic').keyup();
-})
-
-/* Fonction pour l'ajout de commande, appellé automatiquement par plugin.template */
+/*
+* Fonction permettant l'affichage des commandes dans l'équipement
+*/
 function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
        var _cmd = {configuration: {}};
