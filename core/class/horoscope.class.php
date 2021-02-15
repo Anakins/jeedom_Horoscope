@@ -33,6 +33,10 @@ class horoscope extends eqLogic
     /*     * *************************Attributs****************************** */
 
     /*     * ***********************Methode static*************************** */
+    public static function deadCmd()
+    {
+        return array();
+    }
 
     public static function getHoroscopeForSigne($signe_zodiaque)
     {

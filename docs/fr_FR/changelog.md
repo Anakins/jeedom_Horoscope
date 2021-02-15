@@ -6,13 +6,23 @@ pluginId: horoscope
 ---
 
 # Info
+
 ## Description
+
 Ce Plugin permet de générer une phrase (selon différents thèmes) tous les jours en fonction des différents signes astrologiques.<br/>Très sympa pour donner l'horoscope le matin à une personne via TTS (par exemple avec la caméra Netatmo qui reconnait les visages) ou par SMS.
 
 ## Important
->***Pour rappel*** s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
+
+> **_Pour rappel_** s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
+
+# Version 20210215
+
+- Affichage tableau Core v4.2 (beta)
+- Correction Objet Parent
+- Amélioration générale de l'affichage (Prise en compte des améliorations 4.1 du core)
 
 # Version 20200512
+
 - Modification du système de Cron (merci @Mips), il se configure ou pas sur chaque équipement.
 - Possibilité de rafraichir le widget depuis un scénario.
 - Commande Refresh (sur la tuile, scénario etc).
@@ -31,21 +41,26 @@ Ce Plugin permet de générer une phrase (selon différents thèmes) tous les jo
 - Correction Bug : l'actualisation des données ne se fait plus si l'équipement est désactivé
 - Correction erreur MySql lors de la création d'un équipement
 
->*Remarque : Il est conseillé de supprimer le plugin et ensuite le réinstaller*
+> _Remarque : Il est conseillé de supprimer le plugin et ensuite le réinstaller_
 
 # Version 1.06
+
 - Mise à jour info.json (pour jeedom 3)
 
 # Version 1.05 - 19/12/2016
+
 - Mise à jour du widget
 
 # Version 1.04 - 18/12/2016
+
 - Mise à jour du widget
 
 # Version 1.03 - 18/12/2016
+
 - Suppression de la classe bootstrap
 
 # Version 1.02 - 18/12/2016
+
 - Actualisation de l'horoscope après la création de l'équipement
 
 # Version 1.0 - 18/12/2016
@@ -54,4 +69,5 @@ Ce Plugin permet de générer une phrase (selon différents thèmes) tous les jo
 - Première publication du plugin
 
 # Version 1.0 - 26/09/2016
+
 - Version initiales du plugin
