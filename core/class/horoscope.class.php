@@ -37,6 +37,7 @@ class horoscope extends eqLogic
     {
         return array();
     }
+    public static $_widgetPossibility = array('custom' => true);
 
     public static function getHoroscopeForSigne($signe_zodiaque)
     {
