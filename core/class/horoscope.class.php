@@ -70,7 +70,14 @@ class horoscope extends eqLogic
                         $theme = $matches[1];
                         $theme = str_replace(' ', '', $theme);
                         $theme = str_replace('\'', '', $theme);
+                        // Elime le point en fin de phrase 
+                        //$theme2 = rtrim($theme, '.');
+                        //log::add('horoscope', 'debug', ' ─────────> Valeur ==> ' . $theme2);
                         $phrase = $matches[2];
+                        // Elime le point en fin de phrase 
+                        $phrase = rtrim($phrase, '.');
+                        //log::add('horoscope', 'debug', ' ─────────> Valeur ==> ' . $phrase);
+                        // Fin Elime le point en fin de phrase 
                         $theme_strip = strtolower(preg_replace('/[^\wéè]/', '_', $theme));
                         $horoscope['themes'][$theme] = $phrase;
                         $horoscope['themes_simple'][$theme_strip] = $phrase;
@@ -142,7 +149,7 @@ class horoscope extends eqLogic
     public function postSave()
     {
         $_eqName = $this->getName();
-        log::add('horoscope', 'debug', 'postSave() =>' . $_eqName);
+        log::add('horoscope', 'debug', 'postSave() => ' . $_eqName);
         $order = 1;
 
         $signe_zodiaque = $this->getConfiguration('signe');
@@ -220,7 +227,7 @@ class horoscope extends eqLogic
             if (!is_string($message)) {
                 continue;
             }
-            log::add('horoscope', 'debug', "│ Modification de la commande : {$theme_name} : {$message}");
+            log::add('horoscope', 'debug', "│ Info : {$theme_name} ==> {$message}");
 
             $horoscopeCmd = $this->getCmd(null, $theme_name);
             if (!is_object($horoscopeCmd)) {
