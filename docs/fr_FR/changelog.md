@@ -15,6 +15,11 @@ Ce Plugin permet de générer une phrase (selon différents thèmes) tous les jo
 
 > **_Pour rappel_** s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 02/04/2023
+
+- Correction pour core 4.4
+- Version mini Core pour le plugin est 4.2
+
 # Version 20220205
 
 - Affichage Core v4.2
